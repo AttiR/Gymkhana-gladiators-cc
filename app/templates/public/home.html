@@ -1,13 +1,98 @@
-{% extends "public/templates/public_template.html" %}
-{% block title %} Helsinki Gymkhana CC {% endblock %}
-{% block main %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>welcome, Onboard</h1>
-            <p class="intro">we are learning, Flask-Structure</p>
-            
+{% extends "public/templates/public_template.html" %} {% block title %} Helsinki
+Gymkhana CC {% endblock %} {% block main %}
+
+<img
+  class="main-img"
+  id="image"
+  src="{{ url_for('static', filename='img/main-img4.jpg') }}"
+  alt="image"
+/>
+
+<!---- categories------->
+
+<div class="container categories">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="card" id="about">
+        <a href="/about" aria-label="about us">
+          <img
+            class="category-img"
+            src="{{ url_for('static', filename='img/main-img2.jpg') }}"
+            class="card-img-top"
+            alt="image"
+          />
+        </a>
+
+        <div class="card-body">
+          <a href="/about" aria-label="about us"
+            ><h5 class="card-title">About Us</h5></a
+          >
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
         </div>
+      </div>
     </div>
+
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="card" id="members">
+        <a href="#" aria-label="About club memmbers">
+          <img
+            class="category-img"
+            src="{{ url_for('static', filename='img/main-img2.jpg') }}"
+            class="card-img-top"
+            alt="image"
+          />
+        </a>
+
+        <div class="card-body">
+          <a href="/about" aria-label="Cricet Hq" id=""
+            ><h5 class="card-title">Club Members</h5></a
+          >
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="card" id="crichq">
+        <a href="https://www.crichq.com" aria-label="Crichq" target="blank">
+          <img
+            class="category-img"
+            src="{{ url_for('static', filename='img/crichq.jpg') }}"
+            class="card-img-top"
+            alt="image"
+          />
+        </a>
+
+        <div class="card-body">
+          <a href="https://www.crichq.com" aria-label="about us" target="blank"
+            ><h5 class="card-title">CricHQ</h5></a
+          >
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 {% endblock %}
+<!---- 
+  <script type="text/javascript">
+  let image = document.getElementById(image);
+  let images = [
+    "{{ url_for('static', filename='img/main-img1.jpg') }}",
+    "{{ url_for('static', filename='img/main-img2.jpg') }}",
+  ];
+  setInterval(function () {
+    let random = Math.floor(Math.random() * 2);
+    image.src = images[random];
+  }, 800);
+</script>----->
