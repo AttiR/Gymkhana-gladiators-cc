@@ -21,3 +21,18 @@ def signup():
 @app.route("/login")
 def login():
     return render_template("public/login.html")             
+
+@app.route("/gallary")
+def gallary():
+    return render_template("public/gallary.html")  
+
+@app.route("/club-members")
+def members():
+    return render_template("public/members.html")     
+
+@app.route("/acheivements")
+def acheievments():
+    return render_template("public/acheivements.html") 
+@app.route("/policy")
+def policy():
+    return render_template("public/policy.html")          

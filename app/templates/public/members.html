@@ -1,0 +1,16 @@
+{% extends "public/templates/public_template.html" %} {% block title %} Club
+Members {% endblock %} {% block main %}
+<img
+  class="main-imgforsubpages"
+  src="{{ url_for('static', filename='img/main-img3.jpg') }}"
+  alt="image"
+/>
+<div class="container my-4">
+  <div class="row">
+    <div class="col">
+      <h1>Our Members</h1>
+      <p>Note theses profile will be fteched from database</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
