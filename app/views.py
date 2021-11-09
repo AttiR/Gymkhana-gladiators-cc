@@ -4,6 +4,7 @@ from flask import render_template
 
 @app.route("/")
 def home():
+    print(app.config['ENV'])
     return render_template("public/home.html")
 
 @app.route("/about")

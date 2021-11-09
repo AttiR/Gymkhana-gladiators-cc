@@ -2,5 +2,6 @@
 env/
 __pychache__
 
+.env
 
 
