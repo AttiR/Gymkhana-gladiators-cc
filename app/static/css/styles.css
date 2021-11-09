@@ -1,7 +1,24 @@
+/* VARIABLES */
+:root {
+  --color-primary: orangered;
+  --color-secondary: green;
+  --color-text: #6d7c90;
+  --white: #fff;
+  --grey: #eee;
+  --light-grey: #f3f4f6;
+  --dark: #333;
+  --brown: rgba(104, 50, 5, 1);
+  --purple: rgba(80, 3, 71, 1);
+  --box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+}
+
+/* GLOBAL STYLES */
 *,
-body {
-  margin: 0;
+*::before,
+*::after {
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 a,
 a:link,
@@ -40,9 +57,87 @@ i {
   margin: 4rem auto;
 }
 .category-img {
-  width: 355px;
-  height: 300px;
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
 }
+.card {
+  margin-bottom: 20px;
+}
+
+/*** News & Events ***/
+#updates h2 {
+  color: orange;
+  margin-bottom: 4rem;
+  margin-left: 100px;
+}
+#news-events {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+.testimonial-box {
+  margin: 1rem;
+  background-color: var(--white);
+  text-align: center;
+  border-radius: 5px;
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transform: translateY(0);
+  transition: all 0.3s;
+}
+
+.testimonial-box:hover {
+  background-color: var(--light-grey);
+  transform: translateY(-1rem);
+}
+
+.testimonial-box i {
+  font-size: 3rem;
+  color: var(--grey);
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+
+.testimonial-box:hover i {
+  color: var(--purple);
+}
+
+.testimonial p {
+  font-size: 1.4rem;
+  margin: 1rem;
+}
+
+.testimonial-box img {
+  width: 30%;
+  border: 3px solid var(--grey);
+  border-radius: 50%;
+}
+
+.name {
+  color: var(--purple);
+  font-weight: 700;
+}
+
+/**** CTA ***/
+.CTA {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.press-logo {
+  max-width: 15%;
+  margin: auto 50px;
+}
+#press {
+  background-color: #ef8172;
+  padding: 3%;
+}
+
 /**  Footer Section  **/
 #footer {
   text-align: center;
@@ -57,4 +152,22 @@ i {
 
 .social-icon {
   margin: 20px 10px;
+}
+
+/******* Tablet Quiries *********/
+@media screen and (max-width: 769px) {
+  #news-events {
+    flex-direction: column;
+  }
+}
+
+/********* Mobile Queries **********/
+@media screen and (max-width: 600px) {
+  #news-events {
+    flex-direction: column;
+  }
+  .press-logo {
+    max-width: 20%;
+    margin: auto 10px;
+  }
 }

@@ -17,7 +17,7 @@ Gymkhana CC {% endblock %} {% block main %}
         <a href="/about" aria-label="about us">
           <img
             class="category-img"
-            src="{{ url_for('static', filename='img/main-img2.jpg') }}"
+            src="{{ url_for('static', filename='img/about.jpg') }}"
             class="card-img-top"
             alt="image"
           />
@@ -80,11 +80,135 @@ Gymkhana CC {% endblock %} {% block main %}
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-{% endblock %}
-<!---- 
+
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="card" id="Acheivements">
+            <a href="https://www.crichq.com" aria-label="Crichq" target="blank">
+              <img
+                class="category-img"
+                src="{{ url_for('static', filename='img/acheivements3.jpg') }}"
+                class="card-img-top"
+                alt="image"
+              />
+            </a>
+
+            <div class="card-body">
+              <a
+                href="https://www.crichq.com"
+                aria-label="about us"
+                target="blank"
+                ><h5 class="card-title">Acheivements</h5></a
+              >
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="card" id="Gallary">
+            <a href="https://www.crichq.com" aria-label="Gallary" target="blank">
+              <img
+                class="category-img"
+                src="{{ url_for('static', filename='img/main-img1.jpg') }}"
+                class="card-img-top"
+                alt="image"
+              />
+            </a>
+
+            <div class="card-body">
+              <a
+                href="https://www.crichq.com"
+                aria-label="about us"
+                target="blank"
+                ><h5 class="card-title">Gallary</h5></a
+              >
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="card" id="circket-finland">
+            <a href="https://cricketfinland.com" aria-label="circket-finland" target="blank">
+              <img
+                class="category-img"
+                src="{{ url_for('static', filename='img/cricketfinland-logo.png') }}"
+                class="card-img-top"
+                alt="image"
+              />
+            </a>
+
+            <div class="card-body">
+              <a
+                href="https://cricketfinland.com"
+                aria-label="about us"
+                target="blank"
+                ><h5 class="card-title">Cricket Finland</h5></a
+              >
+              <p class="card-text">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!----- News and event ------>
+    <section id="updates">
+    <h2>Updates</h2>
+    <div class="container" id="news-events">
+      <div class="testimonial-box">
+        <i class="fas fa-quote-left">Title</i>
+        <p>
+          I've been working with these guys for a long time and I can say that my business is in perfect hands.
+        </p>
+        <img src="" alt="image">
+        <p class="name">Akpareva Zino</p>
+      </div>
+      <div class="testimonial-box">
+        <i class="fas fa-quote-left"></i>
+        <p>
+          I've been working with these guys for a long time and I can say that my business is in perfect hands.
+        </p>
+        <img src="" alt="image">
+        <p class="name">Akpareva Zino</p>
+      </div>
+      <div class="testimonial-box">
+        <i class="fas fa-quote-left"></i>
+        <p>
+          I've been working with these guys for a long time and I can say that my business is in perfect hands.
+        </p>
+        <img src="" alt="image">
+        <p class="name">Akpareva Zino</p>
+      </div>
+      
+    
+
+    </div>
+  </section>
+
+   <!----- CTA ------->
+   <section id="press">
+     <div class="CTA"><img class="press-logo" src="{{ url_for('static', filename='img/logo.png') }}" alt="image">
+      <img class="press-logo" src="{{ url_for('static', filename='img/fafas.png') }}" alt="image">
+      <img class="press-logo" src="{{ url_for('static', filename='img/cricketfinland-logo.png') }}" alt="biz-insider-logo">
+      <img class="press-logo" src="{{ url_for('static', filename='img/crickhq.png') }}" alt="mashable-logo">
+  </div>
+    
+  </section>
+
+    {% endblock %}
+    <!---- 
   <script type="text/javascript">
   let image = document.getElementById(image);
   let images = [
@@ -96,3 +220,5 @@ Gymkhana CC {% endblock %} {% block main %}
     image.src = images[random];
   }, 800);
 </script>----->
+  </div>
+</div>
