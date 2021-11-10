@@ -1,12 +1,71 @@
-{% extends "public/templates/public_template.html" %}
-{% block title %} Helsinki Gymkhana CC {% endblock %}
-{% block main %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>Contact Us</h1>
-            
-        </div>
+{% extends "public/templates/public_template.html" %} {% block title %} Helsinki
+Gymkhana CC {% endblock %} {% block main %}
+<section id="contact-section">
+  <div class="container contact">
+    <div class="contact-us id:adress">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis
+        commodi consequuntur provident cumque at voluptatibus vero cupiditate
+        obcaecati vitae aliquid odit ipsa pariatur similique illum quasi eos, id
+        
+      </p>
+      <p>
+        <address>
+          <b>Adress: </b> <br> Helsinkijljdoekopdekpoe<br>
+          kdekpdkpe<br>
+          13444<br>
+          kckdöld
+        </address>
+      </p>
+      <p>
+        <b>Email:</b><br>
+        
+          xyzrd@gmail.com<br>
+          hkjjii@gmail.com<br>
+          hgydd@gmail.com<br>
+        
+        
+      </p>
+      <p>
+      <b>Cell:</b><br>
+      +7xxx8568658758575 <br>
+      +xhskhs66868686868 <br>
+     
+      </p>
+    
     </div>
-</div>
+    <div class="contact-us">
+      
+      <form method="post" action="/contact">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+          <legend>Contact Us</legend>
+
+          <div class="mb-3">
+            {{ form.first_name.label(class= "form-control-label")}} {{
+            form.first_name(class= "form-control form-control-lg")}}
+          </div>
+          <div class="mb-3">
+            {{ form.last_name.label(class= "form-control-label")}} {{
+            form.last_name(class= "form-control form-control-lg")}}
+          </div>
+
+          <div class="mb-3">
+            {{ form.email.label(class= "form-control-label")}} {{
+            form.email(class= "form-control form-control-lg")}}
+          </div>
+
+          <div class="mb-3">
+            {{ form.feedback.label(class= "form-control-label")}} {{
+            form.feedback(class= "form-control form-control-lg")}}
+          </div>
+
+          <div class="mb-3">
+            {{ form.submit(class= "btn btn-lg btn-success")}}
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}

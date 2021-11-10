@@ -1,19 +1,38 @@
 from app import app
 
-from flask import render_template
+from flask import render_template, request, redirect, url_for
+from app.forms import FeedbackForm
+from app.models import Feedback
+from app import db
+
+
 
 @app.route("/")
 def home():
-    print(app.config['ENV'])
+    print(app.config['SQLALCHEMY_DATABASE_URI'])
     return render_template("public/home.html")
 
 @app.route("/about")
 def about():
     return render_template("public/about.html")  
 
-@app.route("/contact")
+@app.route("/contact", methods=['POST', 'GET'])
 def contact():
-    return render_template("public/contact.html")    
+    form = FeedbackForm()
+    if request.method == 'POST':
+        req= request.form
+        first_name= req['first_name']
+        last_name= req['last_name']
+        email=req['email']
+        feedback=req['feedback']
+
+        # databse entry
+        data = Feedback(first_name, last_name, email, feedback)
+        db.session.add(data)
+        db.session.commit()
+     
+
+    return render_template("public/contact.html", form=form)    
 
 @app.route("/signup")
 def signup():
