@@ -1,7 +1,7 @@
 from app import app
 
 from flask import render_template, request, redirect, url_for, flash
-from app.forms import FeedbackForm
+from app.forms import FeedbackForm, RegistrationForm, LoginForm
 from app.models import Feedback
 from app import db
 from app import mail
@@ -19,9 +19,10 @@ def home():
 def about():
     return render_template("public/about.html")  
 
-
+# Contact/Feedback form route
 @app.route("/contact", methods=['POST', 'GET'])
 def contact():
+    # create object from class
     form = FeedbackForm()
     if request.method == 'POST':
         req= request.form
@@ -41,8 +42,8 @@ def contact():
         mail.send(msg)
         email_sent = True
         if(email_sent):
+            #Flash messages
             flash(f'Feedback has been sent, Thank you {first_name}!', 'success') # flash is an easy mthode to send one time alert
-             # set the base layout for flash messages at base.html
             return redirect( url_for('contact') )
         else:
             return "email not sent"
@@ -50,9 +51,19 @@ def contact():
 
     return render_template("public/contact.html", form=form)    
 
-@app.route("/signup")
+# Registration route
+@app.route("/signup", methods=['POST', 'GET'])
 def signup():
-    return render_template("public/signup.html")  
+    form=RegistrationForm()
+    if request.method=='POST':
+        req=request.form
+        name=req['name']
+        print(req)
+        if form.validate_on_submit():
+            flash(f'Account Created for {name}!', 'success') # flash is an easy mthode to send one time alert
+        # set the base layout for flash messages at base.html
+        return redirect( url_for('signup') )
+    return render_template("public/signup.html", form=form)  
 
 @app.route("/login")
 def login():
