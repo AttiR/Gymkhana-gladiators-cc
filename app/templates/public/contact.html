@@ -35,7 +35,10 @@ Gymkhana CC {% endblock %} {% block main %}
     
     </div>
     <div class="contact-us">
-      
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %}
       <form method="post" action="/contact">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
