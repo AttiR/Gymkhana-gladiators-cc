@@ -57,7 +57,7 @@ def contact():
         html = render_template('mails/feedback.html', first_name=first_name, last_name=last_name,
         email=email, feedback=feedback)
         subject = "Feedback send/Contact Request"
-        send_email('attirehman388@gmail.com', subject, html)
+        send_email('attirehman388@gmail.com', subject, html) #send_emai() from emails.py
         email_sent = True
         if(email_sent):
             #Flash messages
@@ -65,22 +65,7 @@ def contact():
             return redirect( url_for('contact') )
         else:
            return "email not sent"
-
-
-          # how to sent an email
-        #msg = Message('Feedback notification', sender = 'attirehman388@gmail.com', recipients = ['attirehman388@gmail.com'])
-       
-        #msg.body = f'Contact Request/Feedback: Name: {first_name}, {last_name}, Feedback: {feedback},  Email: {email} '
-       # mail.send(msg)
-        #email_sent = True
-        #if(email_sent):
-            #Flash messages
-            #flash(f'Feedback has been sent, Thank you {first_name}!', 'success') # flash is an easy mthode to send one time alert
-            #return redirect( url_for('contact') )
-        #else:
-           # return "email not sent"
      
-
     return render_template("public/contact.html", form=form)    
 
 # Registration route
@@ -103,7 +88,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         pass
-    return render_template("public/login.html", form=form)   
+    return render_template("auth/login.html", form=form)   
 
 # Password Reset Route
 @app.route("/passwordreset", methods=['PSOT', 'GET'])
@@ -111,7 +96,7 @@ def passwodreset():
     form= PasswordresetForm()
     if form.validate_on_submit():
         pass
-    return render_template("public/password_reset.htm", form=form) 
+    return render_template("auth/password_reset.htm", form=form) 
 
 
 @app.route("/gallary")
