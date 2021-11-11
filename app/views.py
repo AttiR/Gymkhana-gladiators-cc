@@ -4,8 +4,9 @@ from flask import render_template, request, redirect, url_for, flash
 from app.forms import FeedbackForm, RegistrationForm, LoginForm, PasswordresetForm
 from app.models import Feedback
 from app import db
-from app import mail
-from flask_mail import Message
+#from app import mail
+#from flask_mail import Message
+from app.emails import send_email
 
 updates =[
     {
@@ -50,18 +51,34 @@ def contact():
         db.session.add(data)
         db.session.commit()
 
-          # how to sent an email
-        msg = Message('Feedback notification', sender = 'attirehman388@gmail.com', recipients = ['attirehman388@gmail.com'])
-       
-        msg.body = f'Contact Request/Feedback: Name: {first_name}, {last_name}, Feedback: {feedback},  Email: {email} '
-        mail.send(msg)
+        # send email for feedback
+        # lest set a test varibale
+        email_sent = False
+        html = render_template('mails/feedback.html', first_name=first_name, last_name=last_name,
+        email=email, feedback=feedback)
+        subject = "Feedback send/Contact Request"
+        send_email('attirehman388@gmail.com', subject, html)
         email_sent = True
         if(email_sent):
             #Flash messages
             flash(f'Feedback has been sent, Thank you {first_name}!', 'success') # flash is an easy mthode to send one time alert
             return redirect( url_for('contact') )
         else:
-            return "email not sent"
+           return "email not sent"
+
+
+          # how to sent an email
+        #msg = Message('Feedback notification', sender = 'attirehman388@gmail.com', recipients = ['attirehman388@gmail.com'])
+       
+        #msg.body = f'Contact Request/Feedback: Name: {first_name}, {last_name}, Feedback: {feedback},  Email: {email} '
+       # mail.send(msg)
+        #email_sent = True
+        #if(email_sent):
+            #Flash messages
+            #flash(f'Feedback has been sent, Thank you {first_name}!', 'success') # flash is an easy mthode to send one time alert
+            #return redirect( url_for('contact') )
+        #else:
+           # return "email not sent"
      
 
     return render_template("public/contact.html", form=form)    
