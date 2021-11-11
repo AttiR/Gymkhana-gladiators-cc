@@ -168,6 +168,18 @@ nav li a:hover:not(.active) {
   height: 400px;
 }
 
+/******* Updates********/
+#update-section {
+  margin-top: 110px;
+}
+.update {
+  margin: 11rem auto 3rem auto;
+}
+.media-object-img {
+  width: 60px;
+  height: 60px;
+}
+
 /******* Contact **********/
 #contact-section {
   margin-top: 110px;
@@ -251,7 +263,6 @@ label {
 .form-check {
   margin-top: 15px;
   margin-bottom: 0;
-  
 }
 
 /******* Rules & Regulations*******/

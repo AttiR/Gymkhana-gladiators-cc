@@ -7,17 +7,31 @@ from app import db
 from app import mail
 from flask_mail import Message
 
+updates =[
+    {
+        'auther': 'zubair',
+        'title': 'We gonna rock this season',
+        'content': 'loremlslslds kjsldjsldjlskdlskdlksldkls',
+        'date': '20th aprile 2021'
+    }
+]
 
 
 @app.route("/")
 def home():
     print(app.config['SQLALCHEMY_DATABASE_URI'])
    
-    return render_template("public/home.html")
+    return render_template("public/home.html", updates=updates)
 
 @app.route("/about")
 def about():
     return render_template("public/about.html")  
+
+# Updates routes
+@app.route("/update")
+def update():
+    return render_template("public/updates.html") 
+    
 
 # Contact/Feedback form route
 @app.route("/contact", methods=['POST', 'GET'])
