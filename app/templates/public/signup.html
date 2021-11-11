@@ -4,7 +4,7 @@ Registration {% endblock %} {% block main %}
   <div class="Big-form">
     <div class="div-center">
       <div class="form-block">
-        <form method="POST" action="">
+        <form method="POST" action="/signup">
           {{ form.hidden_tag() }}
           <fieldset class="form-group">
             <legend class="mb-4">Join the Club Today!</legend>
@@ -81,7 +81,9 @@ Registration {% endblock %} {% block main %}
               form-control-lg") }} {% endif %}
             </div>
           </fieldset>
-          <div class="form-group">{{ form.submit(class="register-bttn") }}</div>
+          <div class="form-group">
+            {{ form.submit(class= "register-bttn") }}
+          </div>
         </form>
 
         <div class="pt-3">

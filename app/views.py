@@ -1,7 +1,7 @@
 from app import app
 
 from flask import render_template, request, redirect, url_for, flash
-from app.forms import FeedbackForm, RegistrationForm, LoginForm
+from app.forms import FeedbackForm, RegistrationForm, LoginForm, PasswordresetForm
 from app.models import Feedback
 from app import db
 from app import mail
@@ -37,8 +37,9 @@ def contact():
         db.session.commit()
 
           # how to sent an email
-        msg = Message('Feedback notification', sender = 'attirehman388@gmail.com', recipients = [email])
-        msg.body = feedback
+        msg = Message('Feedback notification', sender = 'attirehman388@gmail.com', recipients = ['attirehman388@gmail.com'])
+       
+        msg.body = f'Contact Request/Feedback: Name: {first_name}, {last_name}, Feedback: {feedback},  Email: {email} '
         mail.send(msg)
         email_sent = True
         if(email_sent):
@@ -65,9 +66,22 @@ def signup():
         return redirect( url_for('signup') )
     return render_template("public/signup.html", form=form)  
 
-@app.route("/login")
+#Login Route
+@app.route("/login", methods=['PSOT', 'GET'])
 def login():
-    return render_template("public/login.html")             
+    form = LoginForm()
+    if form.validate_on_submit():
+        pass
+    return render_template("public/login.html", form=form)   
+
+# Password Reset Route
+@app.route("/passwordreset", methods=['PSOT', 'GET'])
+def passwodreset():
+    form= PasswordresetForm()
+    if form.validate_on_submit():
+        pass
+    return render_template("public/password_reset.htm", form=form) 
+
 
 @app.route("/gallary")
 def gallary():

@@ -58,6 +58,9 @@ nav li a:hover:not(.active) {
   height: 700px;
   z-index: -1;
 }
+.card {
+  border: none;
+}
 
 /*** Categories ***/
 .categories {
@@ -239,6 +242,16 @@ label {
   margin-top: 2rem;
   color: #fff;
   border: none;
+}
+
+/**** User Login Section****/
+#login-section {
+  margin-top: 110px;
+}
+.form-check {
+  margin-top: 15px;
+  margin-bottom: 0;
+  
 }
 
 /******* Rules & Regulations*******/
