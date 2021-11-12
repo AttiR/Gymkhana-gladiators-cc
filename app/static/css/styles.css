@@ -293,6 +293,14 @@ label {
   height: 400px;
 }
 
+/******** Error Section*********/
+#error-section {
+  margin-top: 110px;
+}
+.error-div {
+  margin: 11rem auto 4rem auto;
+}
+
 /**  Footer Section  **/
 #footer {
   text-align: center;

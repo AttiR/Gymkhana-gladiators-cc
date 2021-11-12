@@ -24,8 +24,16 @@ class RegistrationForm(FlaskForm):
                         validators=[DataRequired(),Length(10, 64), Email()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=7, max=15)])
     re_password = PasswordField('Type Password again', validators=[DataRequired(), Length(min=7, max=15)])
-   
     submit = SubmitField('Sign Up')
+    # def validate_email(self, field):
+        #if User.query.filter_by(email=field.data.lower()).first():
+            #raise ValidationError('Email already registered.')
+
+    #def validate_username(self, field):
+        #if User.query.filter_by(username=field.data).first():
+            # self.flag = True
+            # flash('Username already in use.')
+           # raise ValidationError('Username already in use.')
 
 # Login form class
 

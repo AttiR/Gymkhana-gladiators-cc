@@ -1,8 +1,9 @@
+from werkzeug.security import generate_password_hash
 from app import app
 
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, abort
 from app.forms import FeedbackForm, RegistrationForm, LoginForm, PasswordresetForm
-from app.models import Feedback
+from app.models import Feedback, User
 from app import db
 #from app import mail
 #from flask_mail import Message
@@ -20,7 +21,7 @@ updates =[
 
 @app.route("/")
 def home():
-    print(app.config['SQLALCHEMY_DATABASE_URI'])
+   
    
     return render_template("public/main/home.html", updates=updates)
 
@@ -72,15 +73,25 @@ def contact():
 @app.route("/signup", methods=['POST', 'GET'])
 def signup():
     form=RegistrationForm()
-    if request.method=='POST':
+    if form.validate_on_submit():
         req=request.form
         name=req['name']
-        print(req)
-        if form.validate_on_submit():
-            flash(f'Account Created for {name}!', 'success') # flash is an easy mthode to send one time alert
-        # set the base layout for flash messages at base.html
-        return redirect( url_for('signup') )
-    return render_template("public/signup.html", form=form)  
+        username=req['username']
+        email=req['email']
+        password=req['password']
+        password_hash=generate_password_hash(password)
+
+        data = User(name, username, email, password_hash, confirmed=False)
+        db.session.add(data)
+        db.session.commit()
+
+       
+
+
+
+       
+
+    return render_template("auth/signup.html", form=form)  
 
 #Login Route
 @app.route("/login", methods=['PSOT', 'GET'])
