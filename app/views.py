@@ -22,7 +22,7 @@ updates =[
 def home():
     print(app.config['SQLALCHEMY_DATABASE_URI'])
    
-    return render_template("public/home.html", updates=updates)
+    return render_template("public/main/home.html", updates=updates)
 
 @app.route("/about")
 def about():
