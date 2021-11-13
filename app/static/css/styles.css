@@ -58,10 +58,24 @@ nav li a:hover:not(.active) {
   height: 700px;
   z-index: -1;
 }
-.card {
+#about-card {
   border: none;
 }
-
+#members-card {
+  border: none;
+}
+#crichq-card {
+  border: none;
+}
+#acheivements-card {
+  border: none;
+}
+#gallary-card {
+  border: none;
+}
+#cricketfinland-card {
+  border: none;
+}
 /*** Categories ***/
 .categories {
   margin: 4rem auto;

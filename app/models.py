@@ -45,7 +45,7 @@ class User(db.Model):
         self.admin=admin
         self.image_file=image_file
         
-        self.confrimed = confirmed
+        self.confirmed = confirmed
         self.confirmed_on = confirmed_on
 
     def __repr__(self):

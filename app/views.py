@@ -1,3 +1,4 @@
+from datetime import datetime
 from werkzeug.security import generate_password_hash
 from app import app
 
@@ -82,6 +83,7 @@ def signup():
         password_hash=generate_password_hash(password)
 
         data = User(name, username, email, password_hash, confirmed=False)
+        #admin=User(name, username, email, password_hash, confirmed=True, admin=True, confirmed_on=datetime.now() )
         db.session.add(data)
         db.session.commit()
 
