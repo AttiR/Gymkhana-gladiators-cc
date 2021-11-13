@@ -2,6 +2,8 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,6 +15,7 @@ app = Flask(__name__)
 
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SECURITY_PASSWORD_SALT']=os.getenv('SECURITY_PASSWORD_SALT')
 
 #DataBase setup
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -27,7 +30,12 @@ app.config['MAIL_USERNAME'] = 'attirehman388@gmail.com'
 app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASS')
 mail = Mail(app)
 
+
+
+
 from app import views 
 from app import admin_views
+from app import auth_views
 from app import errors_handlers
+
 

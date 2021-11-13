@@ -7,3 +7,4 @@ pip install email_validator
 pip install psycopg2-binary
 pip install Flask-SQLAlchemy
 pip install flask_mail
+pip install flask-login

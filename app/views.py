@@ -3,28 +3,22 @@ from werkzeug.security import generate_password_hash
 from app import app
 
 from flask import render_template, request, redirect, url_for, flash, abort
-from app.forms import FeedbackForm, RegistrationForm, LoginForm, PasswordresetForm
-from app.models import Feedback, User
+from app.forms import FeedbackForm,LoginForm, PasswordresetForm
+from app.models import Feedback
 from app import db
 #from app import mail
 #from flask_mail import Message
 from app.emails import send_email
 
-updates =[
-    {
-        'auther': 'zubair',
-        'title': 'We gonna rock this season',
-        'content': 'loremlslslds kjsldjsldjlskdlskdlksldkls',
-        'date': '20th aprile 2021'
-    }
-]
+
+
 
 
 @app.route("/")
 def home():
    
-   
-    return render_template("public/main/home.html", updates=updates)
+    print(app.config['SECURITY_PASSWORD_SALT'])
+    return render_template("public/main/home.html")
 
 @app.route("/about")
 def about():
@@ -70,30 +64,7 @@ def contact():
      
     return render_template("public/contact.html", form=form)    
 
-# Registration route
-@app.route("/signup", methods=['POST', 'GET'])
-def signup():
-    form=RegistrationForm()
-    if form.validate_on_submit():
-        req=request.form
-        name=req['name']
-        username=req['username']
-        email=req['email']
-        password=req['password']
-        password_hash=generate_password_hash(password)
 
-        data = User(name, username, email, password_hash, confirmed=False)
-        #admin=User(name, username, email, password_hash, confirmed=True, admin=True, confirmed_on=datetime.now() )
-        db.session.add(data)
-        db.session.commit()
-
-       
-
-
-
-       
-
-    return render_template("auth/signup.html", form=form)  
 
 #Login Route
 @app.route("/login", methods=['PSOT', 'GET'])
