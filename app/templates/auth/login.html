@@ -37,13 +37,13 @@ Login {% endblock %} {% block main %}
         <div class="pt-3">
           <small class="text-muted">
             Do'nt have an Account?
-            <a class="ml-2" href="{{ url_for('signup') }}"> sign Up </a>
+            <a class="ml-2" href="{{ url_for('auth.signup') }}"> sign Up </a>
           </small>
         </div>
         <div class="pt-3">
           <small class="text-muted">
             Forgot Password?
-            <a class="ml-2" href="{{ url_for('passwodreset') }}">
+            <a class="ml-2" href="{{ url_for('auth.passwodreset') }}">
               Reset Password
             </a>
           </small>

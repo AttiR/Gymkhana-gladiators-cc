@@ -44,7 +44,7 @@
             />
           </a>
 
-          <a class="navbar-brand" href="/"><h2>Helsinki Gymkhana </h2>  </a>
+          <a class="navbar-brand" href="{{ url_for('main.home') }}"><h2>Helsinki Gymkhana </h2>  </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -60,7 +60,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto ">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">HOME</a>
+                <a class="nav-link active" aria-current="page" href="{{ url_for('main.home') }}">HOME</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -75,18 +75,18 @@
                   ABOUT 
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/about">About</a></li>
-                  <li><a class="dropdown-item" href="/club-members">Club Memebers</a></li>
-                  <li><a class="dropdown-item" href="/gallary">Gallary</a></li>
-                  <li><a class="dropdown-item" href="/policy">Rules and Regulations</a></li>
-                  <li><a class="dropdown-item" href="/acheivements">Acheivements</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('main.about') }}">About</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('main.members') }}">Club Memebers</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('main.gallary') }}">Gallary</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('main.policy') }}">Rules and Regulations</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('main.acheievments') }}">Acheivements</a></li>
                   
                   </li> 
                  
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/contact">CNTACT</a>
+                <a class="nav-link" href="{{ url_for('main.contact') }}">CNTACT</a>
               </li>
 
               <li class="nav-item dropdown">
@@ -101,8 +101,8 @@
                   JOIN US
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
-                  <li><a class="dropdown-item" href="/login">Sign In</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+                  <li><a class="dropdown-item" href="{{ url_for('auth.login') }}">Sign In</a></li>
                  
                   
                   

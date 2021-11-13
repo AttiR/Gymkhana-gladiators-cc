@@ -5,11 +5,7 @@ from flask_mail import Mail
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from dotenv import load_dotenv
-
 load_dotenv()
-
-
-
 
 app = Flask(__name__)
 
@@ -33,9 +29,12 @@ mail = Mail(app)
 
 
 
-from app import views 
-from app import admin_views
-from app import auth_views
+from app.main.routes import main
+from app.admin.routes import admin
+from app.auth.routes import auth
 from app import errors_handlers
 
 
+app.register_blueprint(main)
+app.register_blueprint(admin)
+app.register_blueprint(auth)
