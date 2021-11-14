@@ -16,7 +16,7 @@ class RegistrationForm(FlaskForm):
                'Usernames must have only letters, numbers, dots or '
                'underscores')])
     email = StringField('Email',
-                        validators=[DataRequired(),Length(10, 64), Email()])
+                        validators=[DataRequired(),Length(10, 64), Email(message="This is not a valid email")])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=7, max=15),EqualTo('re_password', message='Passwords must match.')])
     re_password = PasswordField('Type Password again', validators=[DataRequired(), Length(min=7, max=15)])
     submit = SubmitField('Sign Up')

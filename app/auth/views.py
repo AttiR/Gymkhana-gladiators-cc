@@ -9,8 +9,9 @@ from ..import db
 #from flask_mail import Message
 from ..emails import send_email
 from .utilits import generate_confirmation_token, confirm_token
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
+
 
 import datetime
 
@@ -25,6 +26,7 @@ def signup():
         email=req['email']
         password=req['password']
         password_hash=generate_password_hash(password)
+      
 
         user = User(name, username, email, password_hash, confirmed=False)
         #admin=User(name, username, email, password_hash, confirmed=True, admin=True, confirmed_on=datetime.datetime.now() )

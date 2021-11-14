@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from werkzeug.security import generate_password_hash, check_password_hash
 from .import db
 
+
 # Contact Database Model
 class Feedback(db.Model):
     __tablename__ = 'feedback'
@@ -50,6 +51,8 @@ class User(db.Model):
 
     def __repr__(self):
         return f"User('{self.name}',{self.username}', '{self.email}')"   
+
+ 
 
 
 # News and updates database

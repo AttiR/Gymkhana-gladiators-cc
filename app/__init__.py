@@ -15,6 +15,7 @@ from config import Config
 
 db=SQLAlchemy()
 mail = Mail()
+bycript=Bcrypt()
 
 
 def create_app(config_class=Config):
@@ -28,6 +29,7 @@ def create_app(config_class=Config):
 
     db.init_app(app)
     mail.init_app(app)
+    bycript.init_app(app)
 
     app.register_blueprint(main_blueprint)
     app.register_blueprint(admin_blueprint)
