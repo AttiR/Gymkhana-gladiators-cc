@@ -8,7 +8,7 @@ from ..import db
 #from app import mail
 #from flask_mail import Message
 from ..emails import send_email
-from ..token import generate_confirmation_token, confirm_token
+from .utilits import generate_confirmation_token, confirm_token
 from werkzeug.security import generate_password_hash
 from flask_login import login_user, logout_user, login_required
 

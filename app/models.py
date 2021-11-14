@@ -1,7 +1,7 @@
-from app import app
+from flask import current_app
 from datetime import datetime, timezone
 from werkzeug.security import generate_password_hash, check_password_hash
-from app import db
+from .import db
 
 # Contact Database Model
 class Feedback(db.Model):
