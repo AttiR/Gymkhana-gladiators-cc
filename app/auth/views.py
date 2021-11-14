@@ -1,15 +1,14 @@
-from flask import Blueprint
-auth=Blueprint('auth', __name__)
+from .import auth
 
 
 from flask import render_template, request, redirect, url_for, flash, abort
-from app.auth.forms import RegistrationForm, LoginForm, PasswordresetForm
-from app.models import  User
-from app import db
+from .forms import RegistrationForm, LoginForm, PasswordresetForm
+from ..models import  User
+from ..import db
 #from app import mail
 #from flask_mail import Message
-from app.emails import send_email
-from app.token import generate_confirmation_token, confirm_token
+from ..emails import send_email
+from ..token import generate_confirmation_token, confirm_token
 from werkzeug.security import generate_password_hash
 from flask_login import login_user, logout_user, login_required
 

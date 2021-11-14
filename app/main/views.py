@@ -1,14 +1,12 @@
-from flask import Blueprint
-main=Blueprint('main', __name__)
-
+from . import main
 from datetime import datetime
 from flask import render_template, request, redirect, url_for, flash, abort
-from app.main.forms import FeedbackForm
-from app.models import Feedback
-from app import db
+from .forms import FeedbackForm
+from ..models import Feedback
+from .. import db
 #from app import mail
 #from flask_mail import Message
-from app.emails import send_email
+from ..emails import send_email
 
 @main.route("/")
 def home():

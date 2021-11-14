@@ -4,7 +4,7 @@ Error-Handlers {% endblock %} {% block main %}
   <div class="container error-div">
     <h1>Page Not Found</h1>
     <img src="{{ url_for('static', filename='img/error2.png') }}" alt="image" />
-    <a href="/"> <p>Return back to Home page</p> </a>
+    <a href="{{ url_for('main.home') }}"> <p>Return back to Home page</p> </a>
   </div>
 </section>
 {% endblock %}

@@ -17,12 +17,13 @@ mail = Mail(app)
 
 
 
-from app.main.routes import main
-from app.admin.routes import admin
-from app.auth.routes import auth
-from app import errors_handlers
+from .main import main as main_blueprint
+from .admin import admin as admin_blueprint
+from .auth import auth as auth_blueprint
 
 
-app.register_blueprint(main)
-app.register_blueprint(admin)
-app.register_blueprint(auth)
+
+app.register_blueprint(main_blueprint)
+app.register_blueprint(admin_blueprint)
+app.register_blueprint(auth_blueprint)
+
