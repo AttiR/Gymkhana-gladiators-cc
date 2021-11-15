@@ -1,0 +1,10 @@
+{% extends "public/templates/public_template.html" %} {% block title %} User Account -Helsinki
+Gymkhana CC {% endblock %} {% block main %}
+<section id="section_account">
+
+    <div class="container user_account">
+       <h1>Welcome {{ current_user.username }} !</h1>
+    </div>
+
+</section>
+{% endblock %}

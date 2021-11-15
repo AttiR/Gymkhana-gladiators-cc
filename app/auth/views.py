@@ -4,13 +4,13 @@ from .import auth
 from flask import render_template, request, redirect, url_for, flash, abort
 from .forms import RegistrationForm, LoginForm, PasswordresetForm
 from ..models import  User
-from ..import db
+from ..import db, bcrypt
 #from app import mail
 #from flask_mail import Message
 from ..emails import send_email
 from .utilits import generate_confirmation_token, confirm_token
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, current_user, logout_user, login_required
 
 
 import datetime
@@ -18,6 +18,8 @@ import datetime
 # Registration route
 @auth.route("/signup", methods=['POST', 'GET'])
 def signup():
+    if current_user.is_authenticated: # if user is already login and registed try to sign up
+        return redirect(url_for('main.home'))
     form=RegistrationForm()
     if form.validate_on_submit():
         req=request.form
@@ -25,7 +27,7 @@ def signup():
         username=req['username']
         email=req['email']
         password=req['password']
-        password_hash=generate_password_hash(password)
+        password_hash=bcrypt.generate_password_hash(password).decode('utf-8')
       
 
         user = User(name, username, email, password_hash, confirmed=False)
@@ -64,12 +66,40 @@ def confirm_email(token):
 
 
 #Login Route
-@auth.route("/login", methods=['PSOT', 'GET'])
+@auth.route("/login", methods=['POST', 'GET'])
 def login():
+    if current_user.is_authenticated: # if user is already login and try to log in again
+        return redirect(url_for('main.home'))
     form = LoginForm()
     if form.validate_on_submit():
-        pass
+        req=request.form
+        email=req['email']
+        password=req['password']
+        
+
+    
+        # make query for User databse
+        user = User.query.filter_by(email=email).first()
+        if user and bcrypt.check_password_hash(user.password, password):
+            login_user(user, remember=form.remember.data) # is user check remember it will return True else False
+            # now lets say user want to access specipic page like user_account, he will be redirected to login page
+            #We want that he should be redirected to desired page not home page for that we will check nxt_page
+            next_page=request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('main.home')) #python ternary operator
+           
+
+        else:
+            flash('Unsuccessfull Login, please cehck email and password', 'danger')
+
     return render_template("auth/login.html", form=form)   
+
+# Logout User
+@auth.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('main.home'))
+
+
 
 # Password Reset Route
 @auth.route("/passwordreset", methods=['PSOT', 'GET'])

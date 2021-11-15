@@ -1,7 +1,19 @@
 from flask import current_app
 from datetime import datetime, timezone
-from werkzeug.security import generate_password_hash, check_password_hash
-from .import db
+
+from .import db, login_manager
+from flask_login import UserMixin
+
+# decorator: to reload the user from user id stored in the session
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+# The extension will expect certain to have certain attributes and methodes
+# is_authenticated, is_active, is_anonymouse get_id we can do manullay but 
+#we will import class User Mixin will do all these things for us
+     
+
 
 
 # Contact Database Model
@@ -21,7 +33,7 @@ class Feedback(db.Model):
         self.feedback=feedback
 
 # User Database
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     name= db.Column(db.String(200), nullable=False)

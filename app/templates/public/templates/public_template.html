@@ -88,25 +88,35 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('main.contact') }}">CNTACT</a>
               </li>
+              
+              <!----- Logout Functionality ----->
+                {% if current_user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('public.account') }}">Account</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                  </li>
 
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown join"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  JOIN US
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{{ url_for('auth.signup') }}">Sign Up</a></li>
-                  <li><a class="dropdown-item" href="{{ url_for('auth.login') }}">Sign In</a></li>
-                 
-                  
-                  
-                </ul>
+                {% else %}
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdown join"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        JOIN US
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="{{ url_for('auth.signup') }}">Sign Up</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('auth.login') }}">Sign In</a></li> 
+                      </ul>
+                    </li>
+                {% endif %}
+
             </ul>
 
            

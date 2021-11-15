@@ -214,6 +214,14 @@ nav li a:hover:not(.active) {
   align-items: stretch;
 }
 
+/*************User Account*****/
+#section_account {
+  margin-top: 110px;
+}
+.user_account {
+  margin: 11rem auto 4rem auto;
+}
+
 /**** Registration Section ****/
 #register-section {
   margin-top: 110px;
