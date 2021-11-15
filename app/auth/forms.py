@@ -17,6 +17,8 @@ class RegistrationForm(FlaskForm):
                'underscores')])
     email = StringField('Email',
                         validators=[DataRequired(),Length(10, 64), Email(message="This is not a valid email")])
+    phonenumber = StringField('Puhelinnumero', validators=[DataRequired(),Length(5, 15),
+        Regexp('^[0-9]*$', 0, 'for phonenumber only numbers')])                    
     password = PasswordField('Password', validators=[DataRequired(), Length(min=7, max=15),EqualTo('re_password', message='Passwords must match.')])
     re_password = PasswordField('Type Password again', validators=[DataRequired(), Length(min=7, max=15)])
     submit = SubmitField('Sign Up')
@@ -28,9 +30,13 @@ class RegistrationForm(FlaskForm):
 
     def validate_username(self, field):
         if User.query.filter_by(username=field.data).first():
-            # self.flag = True
-             #flash('Username already in use.')
+          
             raise ValidationError('Username already in use.')
+
+    def validate_username(self, field):
+        if User.query.filter_by(phonenumber=field.data).first():
+        
+            raise ValidationError('phonenumber already in use.')        
 
 # Login form class
 

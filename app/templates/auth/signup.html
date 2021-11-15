@@ -56,6 +56,19 @@ Registration {% endblock %} {% block main %}
             </div>
 
             <div class="form-group">
+              {{ form.phonenumber.label(class="form-control-label") }} {% if
+              form.phonenumber.errors %} {{ form.phonenumber(class="form-control
+              form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.phonenumber.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %} {{ form.phonenumber(class="form-control form-control-lg") }}
+              {% endif %}
+            </div>
+
+            <div class="form-group">
               {{ form.password.label(class="form-control-label") }} {% if
               form.password.errors %} {{ form.password(class="form-control
               form-control-lg is-invalid") }}

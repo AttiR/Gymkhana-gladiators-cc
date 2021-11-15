@@ -26,12 +26,13 @@ def signup():
         name=req['name']
         username=req['username']
         email=req['email']
+        phonenumber=req['phonenumber']
         password=req['password']
         password_hash=bcrypt.generate_password_hash(password).decode('utf-8')
       
 
-        user = User(name, username, email, password_hash, confirmed=False)
-        #admin=User(name, username, email, password_hash, confirmed=True, admin=True, confirmed_on=datetime.datetime.now() )
+        user = User(name, username, email, phonenumber, password_hash, confirmed=False)
+        #admin=User(name, username, email,phonenumber, password_hash, confirmed=True, admin=True, confirmed_on=datetime.datetime.now() )
         db.session.add(user)
         db.session.commit()
         # import from token .py

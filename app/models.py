@@ -39,6 +39,7 @@ class User(db.Model, UserMixin):
     name= db.Column(db.String(200), nullable=False)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False) 
+    phonenumber=db.Column(db.String(15), unique=True)
     password = db.Column(db.String, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     registered_on = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -48,11 +49,12 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Update', backref='author', lazy=True)
   
 
-    def __init__(self, name, username, email, password, confirmed, admin=False,
+    def __init__(self, name, username, email, phonenumber, password, confirmed, admin=False,
                   confirmed_on=None, image_file=None,):
         self.name=name
         self.username=username          
         self.email = email
+        self.phonenumber=phonenumber
         self.registered_on=datetime.now(timezone.utc)
         self.password = password
         self.admin=admin

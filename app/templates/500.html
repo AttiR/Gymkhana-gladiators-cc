@@ -3,7 +3,10 @@ Error-Handlers {% endblock %} {% block main %}
 <section id="error-section">
   <div class="container error-div">
     <h1>Internal Server Error</h1>
-    <img src="{{ url_for('static', filename='img/error3.jpg') }}" alt="image" />
+    <img
+      src="{{ url_for('static', filename='img/mainimages/error3.jpg') }}"
+      alt="image"
+    />
   </div>
 </section>
 {% endblock %}
