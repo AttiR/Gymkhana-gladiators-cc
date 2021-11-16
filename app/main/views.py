@@ -19,8 +19,8 @@ def about():
     return render_template("public/about.html")  
 
 # Updates routes
-@main.route("/update")
-def update():
+@main.route("/updates")
+def updates():
     return render_template("public/updates.html") 
     
 

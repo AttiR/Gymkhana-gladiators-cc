@@ -4,6 +4,13 @@ Account -Helsinki Gymkhana CC {% endblock %} {% block main %}
   <div class="container user_account">
     <center>
       <div class="card card-prof p-4" id="card-div">
+        <!----- Flash message------>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %}
+
         <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
           <div class="card card2" id="prof-content">
             <div
@@ -44,18 +51,33 @@ Account -Helsinki Gymkhana CC {% endblock %} {% block main %}
                   href="{{ url_for('auth.passwodreset') }}"
                   aria-label="password Ressset"
                 >
-                  <button class="btn1 btn-dark" arial_label="profile">
+                  <button class="btn1 btn-dark" arial_label="passwodreset">
                     Resset Password
                   </button></a
                 >
+                <a
+                  href="{{ url_for('auth.update') }}"
+                  aria-label="update Profile"
+                >
+                  <button class="btn1 btn-primary" arial_label="update_profile">
+                    Update Profile
+                  </button>
+                </a>
+              </div>
 
-                <button class="btn1 btn-dark" arial_label="profile">
-                  Chnage Picture
+              <div class="d-flex mt-2">
+                <button class="btn1 btn-dark" arial_label="Delete_profile">
+                  Delete Profile
+                </button>
+                <button class="btn1 btn-dark" arial_label="Delete_profile">
+                  Logout
                 </button>
               </div>
-            </div>
-            <div class="px-2 rounded mt-4 date" id="join_date">
-              <span class="join">Joined, {{ current_user.confirmed_on }}</span>
+              <div class="px-2 rounded mt-4 date" id="join_date">
+                <span class="join"
+                  >Joined, {{ current_user.confirmed_on }}</span
+                >
+              </div>
             </div>
           </div>
         </div>

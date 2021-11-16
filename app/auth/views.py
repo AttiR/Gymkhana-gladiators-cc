@@ -1,8 +1,7 @@
 from .import auth
 
-
 from flask import render_template, request, redirect, url_for, flash, abort
-from .forms import RegistrationForm, LoginForm, PasswordresetForm
+from .forms import RegistrationForm, LoginForm, PasswordresetForm, UpdateAccountForm
 from ..models import  User
 from ..import db, bcrypt
 #from app import mail
@@ -22,12 +21,12 @@ def signup():
         return redirect(url_for('main.home'))
     form=RegistrationForm()
     if form.validate_on_submit():
-        req=request.form
-        name=req['name']
-        username=req['username']
-        email=req['email']
-        phonenumber=req['phonenumber']
-        password=req['password']
+
+        name=form.name.data
+        username=form.username.data
+        email=form.email.data
+        phonenumber=form.phonenumber.data
+        password=form.password.data
         password_hash=bcrypt.generate_password_hash(password).decode('utf-8')
       
 
@@ -73,9 +72,8 @@ def login():
         return redirect(url_for('main.home'))
     form = LoginForm()
     if form.validate_on_submit():
-        req=request.form
-        email=req['email']
-        password=req['password']
+        email=form.email.data
+        password=form.password.data
         
 
     
@@ -103,9 +101,41 @@ def logout():
 
 
 # Password Reset Route
-@auth.route("/passwordreset", methods=['PSOT', 'GET'])
+@auth.route("/passwordreset", methods=['POST', 'GET'])
 def passwodreset():
     form= PasswordresetForm()
     if form.validate_on_submit():
         pass
     return render_template("auth/password_reset.htm", form=form)    
+
+
+# Account/Profile
+@auth.route("/account", methods=["POST", "GET"])
+@login_required #only authenticated user access these route
+def account():
+   
+    
+    image_file= url_for('static', filename='img/profileimg/' +current_user.image_file)
+    return render_template('auth/account.html', file= image_file)  
+
+
+# Profile Update
+@auth.route("/update", methods=["POST", "GET"])
+@login_required #only authenticated user access these route
+def update():
+    form=UpdateAccountForm()
+    if form.validate_on_submit():
+      
+        current_user.email=form.email.data
+        current_user.phonenumber=form.phonenumber.data
+        db.session.commit()
+        flash('Your Account has been updated!', 'success')
+        return redirect(url_for('auth.account'))
+
+    elif request.method == 'GET':
+       
+        form.email.data = current_user.email    
+        form.phonenumber.data=current_user.phonenumber
+    
+   
+    return render_template('auth/updateprofile.html',  form=form)  

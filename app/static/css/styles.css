@@ -225,7 +225,7 @@ nav li a:hover:not(.active) {
   width: 700px;
   cursor: pointer;
   transition: all 0.5s;
-  margin: 5rem auto;
+  margin: 5rem auto 0 auto;
   border: none;
 }
 @media screen and (max-width: 768px) {
@@ -318,6 +318,11 @@ hr .new1 {
   padding: 1rem auto;
   width: auto;
 }
+#card-update {
+  border: none;
+  margin-top: 0;
+}
+
 /**** Registration Section ****/
 #register-section {
   margin-top: 110px;
