@@ -7,7 +7,7 @@ from ..import db, bcrypt
 #from app import mail
 #from flask_mail import Message
 from ..emails import send_email
-from .utilits import generate_confirmation_token, confirm_token
+from .utilits import generate_confirmation_token, confirm_token, save_picture
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -125,6 +125,10 @@ def account():
 def update():
     form=UpdateAccountForm()
     if form.validate_on_submit():
+        if form.picture.data:
+            picture_file=save_picture(form.picture.data) #import save_picture from utilitis
+            current_user.image_file=picture_file
+
       
         current_user.email=form.email.data
         current_user.phonenumber=form.phonenumber.data

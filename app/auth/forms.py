@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms import ValidationError
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
@@ -62,7 +63,9 @@ class UpdateAccountForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(),Length(10, 64), Email(message="This is not a valid email")])
     phonenumber = StringField('Phonenumber', validators=[DataRequired(),Length(5, 15),
-        Regexp('^[0-9]*$', 0, 'for phonenumber only numbers')])                    
+        Regexp('^[0-9]*$', 0, 'for phonenumber only numbers')])    
+
+    picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])                    
    
     submit = SubmitField('Update Profile')
 
