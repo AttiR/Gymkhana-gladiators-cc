@@ -24,6 +24,7 @@ class Config(object):
     MAIL_USE_TLS= True
     MAIL_USERNAME= 'attirehman388@gmail.com'
     MAIL_PASSWORD= os.getenv('EMAIL_PASS')
+    ADMIN_PASSWORD=os.getenv('ADMIN_PASS')
     
   
 

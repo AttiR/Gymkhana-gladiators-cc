@@ -19,10 +19,7 @@ def home():
 def about():
     return render_template("public/about.html")  
 
-# Updates routes
-@main.route("/updates")
-def updates():
-    return render_template("public/updates.html") 
+
     
 
 # Contact/Feedback form route
