@@ -64,7 +64,7 @@ class User(db.Model, UserMixin):
         self.confirmed_on = confirmed_on
 
     def __repr__(self):
-        return f"User('{self.name}',{self.username}', '{self.email}')"   
+        return f"{self.name},{self.username}, {self.email}, {self.image_file}"  
 
  
 

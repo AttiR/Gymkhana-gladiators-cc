@@ -1,13 +1,92 @@
-{% extends "admin/templates/admin_template.html" %}
-{% block title %} Admin Dashboard {% endblock %}
-{% block main %}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h1>welcome Admin Dahboard</h1>
-            <p class="intro">we are learning, Flask-Structure</p>
-            
+{% extends "public/templates/public_template.html" %} {% block title %} Admin
+Account -Helsinki Gymkhana CC {% endblock %} {% block main %}
+<section id="section_account">
+  <div class="container user_account">
+    <center>
+      <div class="card card-prof p-4" id="card-div">
+        <!----- Flash message------>
+
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %}
+
+        <div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+          <div class="card card2" id="prof-content">
+            <div
+              class="
+                image
+                d-flex
+                flex-column
+                justify-content-center
+                align-items-center
+              "
+            >
+              <button class="btn probtn btn-secondary my-4" aria-label="img">
+                <img
+                  class="imgpro"
+                  src="{{ file }}"
+                  height="100"
+                  width="100"
+                  alt="image"
+                />
+              </button>
+              <span class="name mt-3">{{ current_user.name }}</span>
+              <span class="idd">{{ current_user.email }}</span>
+              <div
+                class="
+                  d-flex
+                  flex-row
+                  justify-content-center
+                  align-items-center
+                  gap-2
+                "
+              >
+                <span class="idd1">{{ current_user.phonenumber }}</span>
+                <span><i class="fa fa-copy"></i></span>
+              </div>
+
+              <div class="d-flex mt-2">
+                <a
+                  href="{{ url_for('auth.passwodreset') }}"
+                  aria-label="password Ressset"
+                >
+                  <button class="btn1 btn-success" arial_label="passwodreset">
+                    Resset Password
+                  </button>
+                </a>
+                <a
+                  href="{{ url_for('auth.update') }}"
+                  aria-label="update Profile"
+                >
+                  <button class="btn1 btn-info" arial_label="update_profile">
+                    Update Profile
+                  </button>
+                </a>
+              </div>
+
+              <div class="d-flex mt-2">
+                <a href="#" aria-label="delete profile">
+                  <button class="btn1 btn-warning" arial_label="Delete_profile">
+                    Delete Profile
+                  </button>
+                </a>
+                <a href="{{ url_for('auth.logout') }}" aria-label="Logout">
+                  <button class="btn1 btn-danger" arial_label="logout">
+                    Logout
+                  </button>
+                </a>
+              </div>
+              <div class="px-2 rounded mt-4 date" id="join_date">
+                <span class="join"
+                  >Joined, {{ current_user.confirmed_on }}</span
+                >
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+    </center>
+  </div>
+</section>
 {% endblock %}

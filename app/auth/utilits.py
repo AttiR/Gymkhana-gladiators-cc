@@ -1,8 +1,10 @@
 import os
 import secrets
 from  flask import current_app
+from PIL import Image
 from itsdangerous import URLSafeTimedSerializer
 
+# generate Token for user authentication
 
 def generate_confirmation_token(email):
     serializer = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
@@ -30,6 +32,15 @@ def save_picture(form_picture):
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(current_app.root_path, 'static/img/profileimg', picture_fn)
 
-    form_picture.save(picture_path)
+    # inorder to recize images we will use package pillow
+    #pip install pillow
+    picture_size=(200, 200)
+    s=Image.open(form_picture)
+    s.thumbnail(picture_size)
+
+    #form_picture.save(picture_path) 
+    s.save(picture_path)
+    
+
 
     return picture_fn    

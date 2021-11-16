@@ -2,11 +2,12 @@ from . import main
 from datetime import datetime
 from flask import render_template, request, redirect, url_for, flash, abort
 from .forms import FeedbackForm
-from ..models import Feedback
+from ..models import Feedback,User
 from .. import db
 #from app import mail
 #from flask_mail import Message
 from ..emails import send_email
+from flask_login import current_user
 
 @main.route("/")
 def home():
@@ -63,9 +64,12 @@ def contact():
 def gallary():
     return render_template("public/gallary.html")  
 
-@main.route("/club-members")
+@main.route("/club-members", methods=['POST', 'GET'])
 def members():
-    return render_template("public/members.html")     
+    user = User.query.order_by(User.confirmed_on).all() # how to abstract data from User model
+    
+    
+    return render_template("public/members.html", user=user)     
 
 @main.route("/acheivements")
 def acheievments():
