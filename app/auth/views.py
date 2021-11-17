@@ -1,7 +1,7 @@
 from .import auth
 
 from flask import render_template, request, redirect, url_for, flash, abort
-from .forms import RegistrationForm, LoginForm, PasswordresetForm, UpdateAccountForm, PasswordRecovery
+from .forms import RegistrationForm, LoginForm, PasswordresetForm, UpdateAccountForm, PasswordRecovery, DeleteAccount
 from ..models import  User
 from ..import db, bcrypt
 #from app import mail
@@ -102,8 +102,7 @@ def logout():
 # Password Recovery Email 
 @auth.route('/recoverpass', methods=['POST', 'GET'])
 def recoverpass():
-    if current_user.is_authenticated: # if user is already login and registed try to sign up
-        return redirect(url_for('main.home'))
+   
     form= PasswordRecovery()
     if form.validate_on_submit():
         user= User.query.filter_by(email=form.email.data).first()
@@ -126,8 +125,6 @@ def recoverpass():
 # Password Reset Token
 @auth.route("/passwordreset/<token>", methods=['POST', 'GET'])
 def reset_token(token):
-    if current_user.is_authenticated: # if user is already login and registed try to sign up
-        return redirect(url_for('main.home'))
     user=User.verify_reset_token(token)
     if user is None:
         flash('Invalid or Expired token', 'warning')  
@@ -177,3 +174,17 @@ def update():
     
    
     return render_template('auth/updateprofile.html',  form=form)  
+
+# Account/Profile Delete
+@auth.route("/delete", methods=["POST", "GET"])
+@login_required #only authenticated user access these route
+def delete():
+    form=DeleteAccount()
+    if form.validate_on_submit():
+        user=User.query.filter_by(email=form.email.data).first() #first() first user with thats email
+        db.session.delete(user)
+        db.session.commit()
+        flash('Account has been deleted!', 'success')
+        return redirect(url_for('main.home'))
+    
+    return render_template('auth/deleteaccount.html', form=form)

@@ -1,5 +1,5 @@
-{% extends "public/templates/public_template.html" %} {% block title %} User
-Password Recovery {% endblock %} {% block main %}
+{% extends "public/templates/public_template.html" %} {% block title %} Delete Account
+ {% endblock %} {% block main %}
 <section id="pssword-section">
   <!--------Flash messages------------>
 
@@ -10,10 +10,10 @@ Password Recovery {% endblock %} {% block main %}
   <div class="Big-form">
     <div class="div-center">
       <div class="form-block">
-        <form method="post" action="/recoverpass">
+        <form method="post" action="/delete">
           {{ form.hidden_tag() }}
           <fieldset class="form-group">
-            <legend>Password Recovery Email</legend>
+            <legend>Delete Account</legend>
 
             <div class="form-group">
                 {{ form.email.label(class="form-control-label") }}

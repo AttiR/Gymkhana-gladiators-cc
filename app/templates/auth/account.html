@@ -66,7 +66,10 @@ Account -Helsinki Gymkhana CC {% endblock %} {% block main %}
               </div>
 
               <div class="d-flex mt-2">
-                <a href="#" aria-label="delete profile">
+                <a
+                  href="{{ url_for('auth.delete') }}"
+                  aria-label="delete profile"
+                >
                   <button class="btn1 btn-warning" arial_label="Delete_profile">
                     Delete Profile
                   </button>

@@ -99,4 +99,13 @@ class UpdateAccountForm(FlaskForm):
             if user:
                 raise ValidationError('That phone already exists Please enter a different one.')              
 
+# Account Delete Form
+class DeleteAccount(FlaskForm):
+    email = StringField('Email',
+                        validators=[DataRequired(),Length(1, 64),  Email()])
+    submit = SubmitField('Delete Account')  
 
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is None:
+           raise ValidationError('Account with this email does not exist.')   
