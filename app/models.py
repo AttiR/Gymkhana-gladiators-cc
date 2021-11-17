@@ -1,10 +1,10 @@
 from flask import current_app
 from datetime import datetime, timezone
-
-from flask_admin.contrib.sqla.view import ModelView
+from flask import redirect, url_for
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from .import db, login_manager
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
+
 
 
 # decorator: to reload the user from user id stored in the session
@@ -83,6 +83,7 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f"{self.name},{self.username}, {self.email}, {self.phonenumber}, {self.image_file}"  
+
 
  
 
