@@ -4,6 +4,7 @@ from  flask import current_app
 from PIL import Image
 from itsdangerous import URLSafeTimedSerializer
 
+
 # generate Token for user authentication
 
 def generate_confirmation_token(email):
@@ -22,6 +23,9 @@ def confirm_token(token, expiration=3600):
     except:
         return False
     return email
+
+
+       
 
 
 # save picture function

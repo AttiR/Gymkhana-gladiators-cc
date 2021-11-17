@@ -8,11 +8,13 @@ from .. import db
 #from flask_mail import Message
 from ..emails import send_email
 from flask_login import current_user
+from flask import current_app
+
 
 @main.route("/")
 def home():
-   
-   
+    print(current_app.config['ENV'])
+    
     return render_template("public/main/home.html")
 
 @main.route("/about")

@@ -1,9 +1,11 @@
+from flask.helpers import flash
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms import ValidationError
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
 from ..models import User
+from flask import redirect, url_for
 from flask_login import current_user
 
     
@@ -46,6 +48,19 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(), Length(min=7, max=15)])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')     
+
+
+# Password Reset form for Recovery email
+class PasswordRecovery(FlaskForm):
+    email = StringField('Email',
+                        validators=[DataRequired(),Length(1, 64),  Email()])
+    submit = SubmitField('Send Recover Email')  
+
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is None:
+           raise ValidationError('Account with this email does not exist.')           
+
 
 
 # Password Reset Form

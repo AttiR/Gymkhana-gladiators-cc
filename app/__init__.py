@@ -1,10 +1,12 @@
 
 from flask import Flask
+from flask_admin.contrib.sqla.view import ModelView
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_manager
 from config import Config
+from flask_admin import Admin
 
 
 #app = Flask(__name__)
@@ -16,16 +18,18 @@ from config import Config
 db=SQLAlchemy()
 mail = Mail()
 bcrypt=Bcrypt()
+admin=Admin()
 login_manager=LoginManager()
 login_manager.login_view = 'auth.login'
 login_manager.login_message_category='info' # fro flash messages
 
 
 
+
 def create_app(config_class=Config):
 
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(config_class)
 
     from .main import main as main_blueprint
     from .admin import admin as admin_blueprint
@@ -35,7 +39,9 @@ def create_app(config_class=Config):
     db.init_app(app)
     mail.init_app(app)
     bcrypt.init_app(app)
+    
     login_manager.init_app(app)
+   
     
 
     app.register_blueprint(main_blueprint)

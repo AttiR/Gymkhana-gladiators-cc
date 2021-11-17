@@ -1,7 +1,7 @@
 from .import auth
 
 from flask import render_template, request, redirect, url_for, flash, abort
-from .forms import RegistrationForm, LoginForm, PasswordresetForm, UpdateAccountForm
+from .forms import RegistrationForm, LoginForm, PasswordresetForm, UpdateAccountForm, PasswordRecovery
 from ..models import  User
 from ..import db, bcrypt
 #from app import mail
@@ -99,22 +99,48 @@ def logout():
     return redirect(url_for('main.home'))
 
 
-
-# Password Reset Route
-@auth.route("/passwordreset", methods=['POST', 'GET'])
-def passwodreset():
-    form= PasswordresetForm()
+# Password Recovery Email 
+@auth.route('/recoverpass', methods=['POST', 'GET'])
+def recoverpass():
+    if current_user.is_authenticated: # if user is already login and registed try to sign up
+        return redirect(url_for('main.home'))
+    form= PasswordRecovery()
     if form.validate_on_submit():
-        pass
+        user= User.query.filter_by(email=form.email.data).first()
+
+         # import from token .py
+        token = user.get_reset_token()
+        confirm_url = url_for('auth.reset_token', token=token, _external=True)
+        html = render_template('mails/resetpass.html', confirm_url=confirm_url)
+        subject = "Please confirm your email"
+        send_email(user.email, subject, html)
+
+        flash('A Password Recovery email has been sent.', 'success')
+        return redirect(url_for("main.home"))
+
+
+    return render_template('auth/recoverpass.html', form=form)    
+
+
+
+# Password Reset Token
+@auth.route("/passwordreset/<token>", methods=['POST', 'GET'])
+def reset_token(token):
+    if current_user.is_authenticated: # if user is already login and registed try to sign up
+        return redirect(url_for('main.home'))
+    user=User.verify_reset_token(token)
+    if user is None:
+        flash('Invalid or Expired token', 'warning')  
+        return redirect('auth.recoverpass')  
+    form= PasswordresetForm()
+   
     return render_template("auth/password_reset.htm", form=form)    
 
 
-# Account/Profile
+# Account Profile
 @auth.route("/account", methods=["POST", "GET"])
 @login_required #only authenticated user access these route
 def account():
-   
-    
     image_file= url_for('static', filename='img/profileimg/' +current_user.image_file)
     return render_template('auth/account.html', file= image_file)  
 
