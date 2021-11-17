@@ -115,8 +115,8 @@ def recoverpass():
         subject = "Please confirm your email"
         send_email(user.email, subject, html)
 
-        flash('A Password Recovery email has been sent.', 'success')
-        return redirect(url_for("main.home"))
+        flash('A Password Recovery email has been sent.', 'info')
+        return redirect(url_for("auth.login"))
 
 
     return render_template('auth/recoverpass.html', form=form)    
@@ -133,6 +133,14 @@ def reset_token(token):
         flash('Invalid or Expired token', 'warning')  
         return redirect('auth.recoverpass')  
     form= PasswordresetForm()
+    if form.validate_on_submit():
+        password_hash=bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.password= password_hash
+        db.session.commit()
+        
+        flash('Password has been Reset, login now', 'success')
+        return redirect(url_for('auth.login'))
+
    
     return render_template("auth/password_reset.htm", form=form)    
 
