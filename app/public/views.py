@@ -12,9 +12,11 @@ def updates():
     # grab All updated data from posts
     # fetch all from Update table
     #updates=Update.query.all()
-    #Flask Pagination
+    # Flask Pagination
     page=request.args.get('page', 1, type=int) # how to get current page (default is 1)
-    updates=Update.query.paginate(page=page, per_page=4)
+    #updates=Update.query.paginate(page=page, per_page=4)
+    # make a query like the latest post is on the top
+    updates=Update.query.order_by(Update.date_posted.desc()).paginate(page=page, per_page=4)
     return render_template('public/updates.html', updates=updates)
 
 @public.route('/create_update', methods=['POST', 'GET'])
