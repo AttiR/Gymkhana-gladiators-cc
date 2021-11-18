@@ -3,7 +3,9 @@
 <section>
   <div class="container update">
     <!-- Media object -->
-    {% for update in updates %}
+
+    <!-------Updates by using pagination ----->
+    {% for update in updates.items %}
     <div class="d-flex">
       <!-- Image -->
       <img
@@ -13,19 +15,29 @@
       />
       <!-- Body -->
       <div>
-        <h5 class="fw-bold">
+        <h6 class="fw-bold">
           {{ update.author.name }}
           <small class="text-muted"
             >{{ update.date_posted.strftime('%Y-%m-%d') }}</small
           >
-        </h5>
-        <h6 class="text-muted">{{ update.title }}</h6>
+        </h6>
+        <h5 class="text-muted">{{ update.title }}</h5>
         <p>{{ update.content }}</p>
       </div>
     </div>
-    
+
     <!-- Media object -->
     {% endfor %}
+    <!----- For link to othere pages------>
+    {% for page_num in updates.iter_pages() %} {% if page_num %}
+    <a
+      class="btn btn-outline-info mb-4"
+      href="{{ url_for('public.updates', page=page_num) }}"
+      aria-label="link for next pages"
+      >{{ page_num }}</a
+    >
+
+    {% else %} ... {% endif %} {% endfor %}
   </div>
 </section>
 {% endblock %}
