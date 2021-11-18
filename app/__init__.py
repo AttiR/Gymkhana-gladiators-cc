@@ -1,12 +1,13 @@
 
 from flask import Flask
-
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_manager
 from config import Config
 from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+
 
 
 
@@ -37,11 +38,13 @@ def create_app(config_class=Config):
     from .main import main as main_blueprint
     from .auth import auth as auth_blueprint
     from .public import public as public_blueprint
+    from .models import User
 
     db.init_app(app)
     mail.init_app(app)
     bcrypt.init_app(app)
-    
+    admin.init_app(app)
+    admin.add_view(ModelView(User, db.session))
     
     login_manager.init_app(app)
 
