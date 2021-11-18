@@ -38,13 +38,13 @@ def create_app(config_class=Config):
     from .main import main as main_blueprint
     from .auth import auth as auth_blueprint
     from .public import public as public_blueprint
-    from .models import User
+    from .models import User, Controller
 
     db.init_app(app)
     mail.init_app(app)
     bcrypt.init_app(app)
     admin.init_app(app)
-    admin.add_view(ModelView(User, db.session))
+    admin.add_view(Controller(User, db.session))
     
     login_manager.init_app(app)
 

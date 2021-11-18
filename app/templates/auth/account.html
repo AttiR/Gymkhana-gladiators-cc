@@ -63,7 +63,13 @@ Account -Helsinki Gymkhana CC {% endblock %} {% block main %}
                     Update Profile
                   </button>
                 </a>
-              
+                {% if current_user.admin==True %}
+                <a href="/admin" aria-label="update Profile">
+                  <button class="btn1 btn-info" arial_label="admin">
+                    Admin
+                  </button>
+                </a>
+                {% endif %}
               </div>
 
               <div class="d-flex mt-2">
