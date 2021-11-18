@@ -3,26 +3,29 @@
 <section>
   <div class="container update">
     <!-- Media object -->
+    {% for update in updates %}
     <div class="d-flex">
       <!-- Image -->
       <img
-        src="https://mdbootstrap.com/img/new/avatars/2.jpg"
-        alt="John Doe"
+        src="{{ url_for('static', filename='img/profileimg/' + update.author.image_file) }}"
+        alt="image"
         class="me-3 rounded-circle media-object-img"
       />
       <!-- Body -->
       <div>
         <h5 class="fw-bold">
-          John Doe
-          <small class="text-muted">Posted on February 19, 2021</small>
+          {{ update.author.name }}
+          <small class="text-muted"
+            >{{ update.date_posted.strftime('%Y-%m-%d') }}</small
+          >
         </h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+        <h6 class="text-muted">{{ update.title }}</h6>
+        <p>{{ update.content }}</p>
       </div>
     </div>
+    
     <!-- Media object -->
+    {% endfor %}
   </div>
 </section>
 {% endblock %}

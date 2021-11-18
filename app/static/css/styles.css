@@ -216,6 +216,11 @@ nav li a:hover:not(.active) {
   align-items: stretch;
 }
 
+/*****************Updstes**************************/
+.create_update {
+  margin: 11rem auto 4rem auto;
+}
+
 /*********************************User Account*****/
 
 .user_account {

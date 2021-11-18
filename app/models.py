@@ -106,10 +106,11 @@ class Update(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    def __init__(self, title, content):
+    def __init__(self, title, content, author):
         self.title=title
         self.content=content
         self.date_posted=datetime.now(timezone.utc)
+        self.author=author
 
     def __repr__(self):
         return f"Update('{self.title}',{self.content}', '{self.date_posted}')"           
