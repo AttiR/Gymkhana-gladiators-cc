@@ -35,7 +35,6 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     from .main import main as main_blueprint
-    from .admin import admin as admin_blueprint
     from .auth import auth as auth_blueprint
     from .public import public as public_blueprint
 
@@ -49,7 +48,6 @@ def create_app(config_class=Config):
   
 
     app.register_blueprint(main_blueprint)
-    app.register_blueprint(admin_blueprint)
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(public_blueprint)
 
