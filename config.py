@@ -18,7 +18,7 @@ class Config(object):
     SECURITY_PASSWORD_SALT=os.environ.get('SECURITY_PASSWORD_SALT')    
    
     SQLALCHEMY_TRACK_MODIFICATIONS= False
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DEV_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
     #Email Setup
     MAIL_SERVER='smtp.googlemail.com'
     MAIL_PORT=587
@@ -28,7 +28,7 @@ class Config(object):
     ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')
     
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI=environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI=environ.get('DATABASE_URL').replace("postgres://", "postgresql://", 1)
     DEBUG=False
 class DevelopmentConfig(Config):
     DEBUG=True      
