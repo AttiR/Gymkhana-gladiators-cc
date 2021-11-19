@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from os import environ
 
 
 # load dotenv in the base root
@@ -27,6 +28,7 @@ class Config(object):
     ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')
     
 class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI=environ.get('DATABASE_URL')
     DEBUG=False
 class DevelopmentConfig(Config):
     DEBUG=True      
