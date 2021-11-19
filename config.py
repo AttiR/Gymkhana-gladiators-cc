@@ -13,21 +13,22 @@ load_dotenv(os.path.join(basedir, '.env'))
 class Config(object):
     DEBUG=False
     TESTING=False
-    SECRET_KEY= os.getenv('SECRET_KEY')
-    SECURITY_PASSWORD_SALT=os.getenv('SECURITY_PASSWORD_SALT')    
+    SECRET_KEY= os.environ.get('SECRET_KEY')
+    SECURITY_PASSWORD_SALT=os.environ.get('SECURITY_PASSWORD_SALT')    
 
     SQLALCHEMY_TRACK_MODIFICATIONS= False
-    SQLALCHEMY_DATABASE_URI=os.getenv('DEV_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI=os.environ.get('DEV_DATABASE_URL')
     #Email Setup
     MAIL_SERVER='smtp.googlemail.com'
     MAIL_PORT=587
     MAIL_USE_TLS= True
-    MAIL_USERNAME= 'attirehman388@gmail.com'
-    MAIL_PASSWORD= os.getenv('EMAIL_PASS')
-    ADMIN_PASSWORD=os.getenv('ADMIN_PASS')
+    MAIL_USERNAME= os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD= os.environ.get('EMAIL_PASS')
+    ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')
     
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI=''
+    DEBUG=True
      
 
 class DevelopmentConfig(Config):

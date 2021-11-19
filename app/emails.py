@@ -8,6 +8,6 @@ def send_email(to, subject, template):
         subject,
         recipients=[to],
         html=template,
-        sender='attirehman@388@gmail.com'
+        sender=current_app.config['MAIL_USERNAME']
     )
     mail.send(msg)
