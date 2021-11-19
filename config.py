@@ -27,22 +27,11 @@ class Config(object):
     ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')
     
 class ProductionConfig(Config):
-    
-   
     DEBUG=False
-     
-
 class DevelopmentConfig(Config):
-    DEBUG=True
-    
-       
+    DEBUG=True      
 class TestingConfig(Config):
     TESTING=True
-
-
-
-
-
 config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
