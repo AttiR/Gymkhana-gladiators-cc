@@ -39,6 +39,7 @@ def create_app(config_class=Config):
     from .auth import auth as auth_blueprint
     from .public import public as public_blueprint
     from .models import User, Update, Controller
+    
 
     db.init_app(app)
     mail.init_app(app)
