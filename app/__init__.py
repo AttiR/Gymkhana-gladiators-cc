@@ -40,6 +40,7 @@ def create_app(config_class=Config):
     from .auth import auth as auth_blueprint
     from .public import public as public_blueprint
     from .models import User, Update, Controller
+    from .commands import create_tables
     
 
     db.init_app(app)
@@ -56,5 +57,6 @@ def create_app(config_class=Config):
     app.register_blueprint(main_blueprint)
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(public_blueprint)
+    app.cli.add_command(create_tables)
 
     return app
