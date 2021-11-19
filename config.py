@@ -27,6 +27,7 @@ class Config(object):
     ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')
     
 class ProductionConfig(Config):
+    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
    
     DEBUG=True
      
@@ -37,6 +38,9 @@ class DevelopmentConfig(Config):
        
 class TestingConfig(Config):
     TESTING=True
+
+
+
 
 
 config = {
