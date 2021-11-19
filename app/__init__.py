@@ -7,7 +7,7 @@ from flask_login import LoginManager, login_manager
 from config import Config
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-from flask_heroku import Heroku
+
 
 
 
@@ -23,7 +23,7 @@ db=SQLAlchemy()
 mail = Mail()
 bcrypt=Bcrypt()
 admin=Admin()
-heroku=Heroku()
+
 
 login_manager=LoginManager()
 login_manager.login_view = 'auth.login'
@@ -51,7 +51,7 @@ def create_app(config_class=Config):
     admin.init_app(app)
     admin.add_view(Controller(User, db.session))
     admin.add_view(Controller(Update, db.session))
-    heroku.init_app(app)
+   
     
     login_manager.init_app(app)
 
