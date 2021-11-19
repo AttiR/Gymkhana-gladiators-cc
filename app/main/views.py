@@ -13,8 +13,7 @@ from flask import current_app
 
 @main.route("/")
 def home():
-    print(current_app.config['MAIL_USERNAME'])
-    print(current_app.config['ENV'])
+    
     
     return render_template("public/main/home.html")
 
