@@ -34,6 +34,7 @@ def create_app(config_class=Config):
 
     app = Flask(__name__)
     app.config.from_object(config_class)
+  
 
     from .main import main as main_blueprint
     from .auth import auth as auth_blueprint
