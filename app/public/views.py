@@ -17,7 +17,7 @@ def updates():
     #updates=Update.query.paginate(page=page, per_page=4)
     # make a query like the latest post is on the top
     updates=Update.query.order_by(Update.date_posted.desc()).paginate(page=page, per_page=4)
-    return render_template('public/updates.html', updates=updates)
+    return render_template('updates/updates.html', updates=updates)
 
 @public.route('/create_update', methods=['POST', 'GET'])
 @login_required
@@ -33,6 +33,10 @@ def create_update():
         flash('Update has been updated successfully', 'info')
         return redirect(url_for('main.home'))
 
-    return render_template('public/create_update.html', form=form)    
+    return render_template('updates/create_update.html', form=form) 
 
-   
+# creating a route to go om specific update dertails
+@public.route('/detail_updates/<int:update_id>')#expecting id int
+def detail_updates(update_id):
+    update=Update.query.get_or_404(update_id) # if update with id does not exists give 404
+    return render_template('updates/details_updates.html', update=update)
