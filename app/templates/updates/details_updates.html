@@ -2,6 +2,11 @@
 details - Helsinki Gymkhana {% endblock %} {% block main %}
 <section>
   <div class="container update">
+    <!-----Flash message--->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %}
     <div
       class="card mb-3"
       style="max-width: 800px; margin-left: auto; margin-right: auto"
@@ -31,14 +36,20 @@ details - Helsinki Gymkhana {% endblock %} {% block main %}
               href="{{ url_for('public.edit', update_id=update.id) }}"
               arial
               aria-label="edit update"
-              ><i
-                class="far fa-edit fa-2x"
-                style="margin-right: 30px; color: rgb(136, 233, 112)"
-              ></i
-            ></a>
-            <a href="" arial aria-label="delete_update"
-              ><i class="far fa-trash-alt fa-2x" style="color: red"></i
-            ></a>
+            >
+              <button class="btn btn-dark mr-5" arial_label="logout">
+                Edit
+              </button>
+            </a>
+            <a
+              href="{{ url_for('public.delete', update_id=update.id) }}"
+              arial
+              aria-label="delete_update"
+            >
+              <button class="btn btn-danger" arial_label="logout">
+                Delete
+              </button>
+            </a>
             {% endif %}
           </div>
         </div>

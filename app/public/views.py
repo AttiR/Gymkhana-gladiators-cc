@@ -61,11 +61,23 @@ def edit(update_id):
         update.content=form.content.data
         db.session.commit()
         flash('Post has been updated', 'success')
-        return redirect(url_for('public.updates', update_id=update.id))
+        return redirect(url_for('public.details_updates', update_id=update.id))
     elif request.method == 'GET': # to populate the form already
         form.title.data= update.title
         form.content.data=update.content    
     # render the same form as did for creating the post
     return render_template('updates/create_update.html', title='Edit Post', legend='Edit Post', form=form) 
 
-
+# Delete The Post/update
+@public.route('/detail_updates/<int:update_id>/delete', methods=['POST', 'GET'])#expecting id int
+@login_required
+def delete(update_id):
+    update=Update.query.get_or_404(update_id) # if update with id does not exists give 404
+    if update.author!= current_user: # as author is admin so only admin will access
+        abort(403)
+    db.session.delete(update)
+    db.session.commit()
+    flash('Post has been delted', 'success')
+    return redirect(url_for('public.updates', update_id=update.id))
+   
+   
