@@ -26,6 +26,20 @@ details - Helsinki Gymkhana {% endblock %} {% block main %}
                 >posted on: {{ update.date_posted.strftime('%Y-%m-%d')}}</small
               >
             </p>
+            {% if current_user.admin== True %}
+            <a
+              href="{{ url_for('public.edit', update_id=update.id) }}"
+              arial
+              aria-label="edit update"
+              ><i
+                class="far fa-edit fa-2x"
+                style="margin-right: 30px; color: rgb(136, 233, 112)"
+              ></i
+            ></a>
+            <a href="" arial aria-label="delete_update"
+              ><i class="far fa-trash-alt fa-2x" style="color: red"></i
+            ></a>
+            {% endif %}
           </div>
         </div>
       </div>

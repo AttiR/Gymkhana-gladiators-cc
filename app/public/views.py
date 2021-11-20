@@ -1,3 +1,4 @@
+from os import abort
 from flask.helpers import flash
 from flask.templating import render_template_string
 from .import public
@@ -7,6 +8,8 @@ from .forms import UpdateForm
 from ..models import Update
 from ..import db
 
+
+#Post/Updates views
 @public.route('/updates')
 def updates():
     # grab All updated data from posts
@@ -19,6 +22,8 @@ def updates():
     updates=Update.query.order_by(Update.date_posted.desc()).paginate(page=page, per_page=4)
     return render_template('updates/updates.html', updates=updates)
 
+
+# Make New Post
 @public.route('/create_update', methods=['POST', 'GET'])
 @login_required
 def create_update():
@@ -33,10 +38,34 @@ def create_update():
         flash('Update has been updated successfully', 'info')
         return redirect(url_for('main.home'))
 
-    return render_template('updates/create_update.html', form=form) 
+    return render_template('updates/create_update.html', legend='Make Post', form=form) 
 
 # creating a route to go om specific update dertails
 @public.route('/detail_updates/<int:update_id>')#expecting id int
 def detail_updates(update_id):
     update=Update.query.get_or_404(update_id) # if update with id does not exists give 404
     return render_template('updates/details_updates.html', update=update)
+
+
+# Editing the update  
+@public.route('/detail_updates/<int:update_id>/edit', methods=['POST', 'GET'])#expecting id int
+@login_required
+def edit(update_id):
+    update=Update.query.get_or_404(update_id) # if update with id does not exists give 404
+    if update.author!= current_user: # as author is admin so only admin will access
+        abort(403)
+    form=UpdateForm() # we will use the same form as for the create update
+    if form.validate_on_submit():
+        # make logic to update the data in database
+        update.title=form.title.data
+        update.content=form.content.data
+        db.session.commit()
+        flash('Post has been updated', 'success')
+        return redirect(url_for('public.updates', update_id=update.id))
+    elif request.method == 'GET': # to populate the form already
+        form.title.data= update.title
+        form.content.data=update.content    
+    # render the same form as did for creating the post
+    return render_template('updates/create_update.html', title='Edit Post', legend='Edit Post', form=form) 
+
+

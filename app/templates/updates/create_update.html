@@ -1,20 +1,17 @@
 {% extends "public/templates/public_template.html" %} {% block title %} Create
 Update {% endblock %} {% block main %}
 <section>
+  <!------ if any flash message------>
+
   <div class="Big-form">
     <div class="div-center">
       <div class="form-block">
         {% if current_user.admin==True %}
         <!------Only Admin has a right to make post---->
-        <form method="post" action="/create_update">
+        <form method="post" action="">
           {{ form.hidden_tag() }}
           <fieldset class="form-group">
-            <legend>Make Update Post</legend>
-            <!------ if any flash message------>
-            {% with messages = get_flashed_messages(with_categories=true) %} {%
-            if messages %} {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">{{ message }}</div>
-            {% endfor %} {% endif %} {% endwith %}
+            <legend>{{ legend }}</legend>
 
             <div class="form-group">
               {{ form.title.label(class= "form-control-label")}} {{
