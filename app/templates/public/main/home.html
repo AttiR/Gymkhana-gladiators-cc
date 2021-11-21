@@ -185,18 +185,26 @@ Gymkhana CC {% endblock %} {% block main %}
       {% endfor %}
     </div>
     <center>
-      <a href="{{ url_for('public.updates')  }}"> <button class="btn btn-dark"> Explore All Updates </button> </a>
+      <a href="{{ url_for('public.updates')  }}"> <button class="btn btn-dark mb-5"> Explore All Updates </button> </a>
     </center>
   </section>
 
-   <!----- CTA ------->
-   <section id="press">
-     <div class="CTA"><img class="press-logo" src="{{ url_for('static', filename='img/mainimages/logo.png') }}" alt="image">
-      <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/fafas.png') }}" alt="image">
-      <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/cricketfinland-logo.png') }}" alt="biz-insider-logo">
-      <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/crickhq.png') }}" alt="mashable-logo">
-  </div>
-    
+
+  
+    <!----- CTA ------->
+    <section id="press">
+      <div class="CTA">
+        <div class="sub_cta">
+          <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/logo.png') }}" alt="image">
+          <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/fafas.png') }}" alt="image">
+        </div>
+        <div class="sub_cta">
+          <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/cricketfinland-logo.png') }}" alt="biz-insider-logo">
+          <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/crickhq.png') }}" alt="mashable-logo">
+        </div>
+        
+       
+   </div>
   </section>
 
     {% endblock %}

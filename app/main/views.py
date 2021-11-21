@@ -14,7 +14,7 @@ from flask import current_app
 @main.route("/")
 def home():
   
-    updates=Update.query.order_by(Update.date_posted.desc())
+    updates=Update.query.order_by(Update.date_posted.desc()).limit(3).all() # fetch only first 3
     
     
     return render_template("public/main/home.html", updates=updates)

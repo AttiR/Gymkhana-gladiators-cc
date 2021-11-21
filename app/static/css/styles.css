@@ -31,9 +31,9 @@ a:active {
 i {
   color: #2b2b2b;
 }
-section {
+/*section {
   margin-top: 110px;
-}
+}*/
 
 /** Navbar **/
 .navbar {
@@ -81,7 +81,7 @@ nav li a:hover:not(.active) {
 }
 /*** Categories ***/
 .categories {
-  margin: 4rem auto;
+  margin: 5rem auto 4rem auto;
 }
 .category-img {
   width: 100%;
@@ -103,10 +103,11 @@ nav li a:hover:not(.active) {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 .testimonial-box {
   width: 400px;
+  min-height: 300px;
   margin: 1rem;
   background-color: var(--white);
   text-align: center;
@@ -135,8 +136,11 @@ nav li a:hover:not(.active) {
   justify-content: center;
   align-items: center;
 }
+.sub_cta {
+  margin: 1rem;
+}
 .press-logo {
-  max-width: 15%;
+  max-width: 30%;
   margin: auto 50px;
 }
 #press {
@@ -462,6 +466,10 @@ label {
   .category-img {
     height: 45vh;
   }
+
+  .CTA {
+    flex-direction: column;
+  }
 }
 
 /********* Mobile Queries **********/
@@ -470,7 +478,7 @@ label {
     flex-direction: column;
   }
   .press-logo {
-    max-width: 20%;
+    max-width: 30%;
     margin: auto 10px;
   }
 }

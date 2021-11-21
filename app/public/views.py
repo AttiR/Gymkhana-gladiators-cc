@@ -61,7 +61,7 @@ def edit(update_id):
         update.content=form.content.data
         db.session.commit()
         flash('Post has been updated', 'success')
-        return redirect(url_for('public.details_updates', update_id=update.id))
+        return redirect(url_for('public.detail_updates', update_id=update_id))
     elif request.method == 'GET': # to populate the form already
         form.title.data= update.title
         form.content.data=update.content    
