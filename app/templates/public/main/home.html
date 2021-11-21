@@ -172,36 +172,21 @@ Gymkhana CC {% endblock %} {% block main %}
     <section id="updates">
     <h2>Updates</h2>
     <div class="container" id="news-events">
-     
-      <div class="testimonial-box">
-        <i class="fas fa-quote-left">Title</i>
-        <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, eum expedita. Nam quaerat.
-        </p>
-        <img src="" alt="image">
-        <p class="name">Zyx Frx</p>
-      </div>
-     
-      <div class="testimonial-box">
-        <i class="fas fa-quote-left"></i>
-        <p>
-          I've been working with these guys for a long time and I can say that my business is in perfect hands.
-        </p>
-        <img src="" alt="image">
-        <p class="name">Akpareva Zino</p>
-      </div>
-      <div class="testimonial-box">
-        <i class="fas fa-quote-left"></i>
-        <p>
-          I've been working with these guys for a long time and I can say that my business is in perfect hands.
-        </p>
-        <img src="" alt="image">
-        <p class="name">Akpareva Zino</p>
-      </div>
-      
-    
-
+      {% for update in updates %}
+        <div class="testimonial-box">
+          <a href="{{ url_for('public.detail_updates', update_id=update.id)  }}" aria-label="details"> <h4>{{ update.title }}</h4></a>
+        
+          <p style="text-align: justify;">
+          {{ update.content }}..<a href="{{ url_for('public.detail_updates', update_id=update.id)  }}"> <small style="color: orange;"> Read more</small></a>
+          </p>
+          <small class="text-muted">Posted on: {{ update.date_posted.strftime('%Y-%m-%d') }}</small>
+          
+        </div>
+      {% endfor %}
     </div>
+    <center>
+      <a href="{{ url_for('public.updates')  }}"> <button class="btn btn-dark"> Explore All Updates </button> </a>
+    </center>
   </section>
 
    <!----- CTA ------->

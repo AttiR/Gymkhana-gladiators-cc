@@ -2,7 +2,7 @@ from . import main
 from datetime import datetime
 from flask import render_template, request, redirect, url_for, flash, abort
 from .forms import FeedbackForm
-from ..models import Feedback,User
+from ..models import Feedback,User, Update
 from .. import db
 #from app import mail
 #from flask_mail import Message
@@ -13,9 +13,11 @@ from flask import current_app
 
 @main.route("/")
 def home():
+  
+    updates=Update.query.order_by(Update.date_posted.desc())
     
     
-    return render_template("public/main/home.html")
+    return render_template("public/main/home.html", updates=updates)
 
 @main.route("/about")
 def about():
@@ -58,10 +60,12 @@ def contact():
      
     return render_template("public/contact.html", form=form)    
 
-
+# Glaaalry section
 @main.route("/gallary")
 def gallary():
     return render_template("public/gallary.html")  
+
+# Club members sections    
 
 @main.route("/club-members", methods=['POST', 'GET'])
 def members():

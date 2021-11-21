@@ -1,13 +1,31 @@
 {% extends "public/templates/public_template.html" %} {% block title %} Club
 Members {% endblock %} {% block main %}
 
-
 <section>
   <div class="container members">
-    
-   </div>
+    <div class="row">
+      {% for member in user %}
+      <div class="col-lg-4 col-md-6 col-xs-12 py-3">
+        <div class="card" id="about-card">
+          <a href="" aria-label="about us" target="_blank">
+            <img
+              class="category-img"
+              src="{{ url_for('static', filename='img/profileimg/' + member.image_file) }}"
+              class="card-img-top"
+              alt="image"
+            />
+          </a>
 
+          <div class="card-body">
+            <h5 class="card-title">{{member.name }}</h5>
 
+            <p class="card-text">{{ member.email }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
 
 {% endblock %}
