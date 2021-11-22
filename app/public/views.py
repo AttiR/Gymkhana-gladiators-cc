@@ -79,5 +79,12 @@ def delete(update_id):
     db.session.commit()
     flash('Post has been delted', 'success')
     return redirect(url_for('public.updates', update_id=update.id))
+
+
+# Upload Image to App
+@public.route('/upload_imge', methods=['GET', 'POST'])
+@login_required
+def upload_image():
+    return render_template('uploads/picupload.html')    
    
    
