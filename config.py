@@ -26,6 +26,7 @@ class Config(object):
     MAIL_USERNAME= os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD= os.environ.get('EMAIL_PASS')
     ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')
+    SSL_REDIRECT = False
 
     @staticmethod
     def init_app(app):
@@ -34,6 +35,7 @@ class Config(object):
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
     DEBUG=False
+    SSL_REDIRECT = True if os.environ.get('DYNO') else False
 
 class DevelopmentConfig(Config):
     DEBUG=True  

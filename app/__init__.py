@@ -7,6 +7,8 @@ from flask_login import LoginManager, login_manager
 from config import config
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+from flask_sslify import SSLify
+
 
 
 
@@ -50,6 +52,12 @@ def create_app(config_name):
     mail.init_app(app)
     bcrypt.init_app(app)
     admin.init_app(app)
+
+    if app.config['SSL_REDIRECT']: 
+        from flask_sslify import SSLify
+        sslify = SSLify(app)
+
+
    
     admin.add_view(Controller(User, db.session))
     admin.add_view(Controller(Update, db.session))
