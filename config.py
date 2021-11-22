@@ -37,6 +37,7 @@ class ProductionConfig(Config):
     DEBUG=False
     SSL_REDIRECT = True #if os.environ.get('DYNO') else False
     MAIL_USE_SSL= True
+    MAIL_PORT=465
 
 class DevelopmentConfig(Config):
     DEBUG=True  
