@@ -4,6 +4,7 @@ from flask import render_template, request, redirect, url_for, flash, abort
 from .forms import FeedbackForm
 from ..models import Feedback,User, Update
 from .. import db
+import os
 #from app import mail
 #from flask_mail import Message
 from ..emails import send_email
@@ -13,7 +14,7 @@ from flask import current_app
 
 @main.route("/")
 def home():
-  
+    print(os.environ.get('EMAIL_PASS'))
     updates=Update.query.order_by(Update.date_posted.desc()).limit(3).all() # fetch only first 3
     
     
