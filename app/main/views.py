@@ -14,7 +14,7 @@ from flask import current_app
 
 @main.route("/")
 def home():
-    print(os.environ.get('EMAIL_PASS'))
+    print(os.environ.get('SECRET_KEY'))
     updates=Update.query.order_by(Update.date_posted.desc()).limit(3).all() # fetch only first 3
     
     

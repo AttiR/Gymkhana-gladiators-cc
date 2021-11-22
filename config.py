@@ -35,7 +35,8 @@ class Config(object):
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
     DEBUG=False
-    SSL_REDIRECT = True if os.environ.get('DYNO') else False
+    SSL_REDIRECT = True #if os.environ.get('DYNO') else False
+    MAIL_USE_SSL= True
 
 class DevelopmentConfig(Config):
     DEBUG=True  
