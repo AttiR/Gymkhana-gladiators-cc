@@ -11,5 +11,5 @@ pip install flask-login
 
 for creating data tablein shell after init app create_app
 from yourapp import db, create_app
-db.create_all(app=create_app())
+db.create_all(app=create_app('production'))
 pip install pillow   (inorder to reisze the laoded images)

@@ -4,21 +4,69 @@ Gymkhana CC {% endblock %} {% block main %}
 <img
   class="main-img"
   id="image"
-  src="{{ url_for('static', filename='img/mainimages/main-img4.jpg') }}"
+  src="{{ url_for('static', filename='img/mainimages/mainfront2.jpg') }}"
   alt="image"
 />
 
-<!---- categories------->
 <!------ Flash message --------->
-{% with messages = get_flashed_messages(with_categories=true) %} {%
-  if messages %} {% for category, message in messages %}
-  <div class="alert alert-{{ category }}">{{ message }}</div>
-  {% endfor %} {% endif %} {% endwith %}
+{% with messages = get_flashed_messages(with_categories=true) %} {% if messages
+%} {% for category, message in messages %}
+<div class="alert alert-{{ category }}">{{ message }}</div>
+{% endfor %} {% endif %} {% endwith %}
 
+<!---------------- Join Us ------------->
+
+<section id="newsletter">
+  
+  <div class="container" style="overflow: hidden">
+    
+   <center>
+     <a
+     href="https://www.facebook.com/groups/helsinkigymkhanacricketclub"
+     target="blank"
+     aria-label="Facebook"
+   >
+     <i class="social-icon fab fa-facebook-f fa-lg  me-3"></i>
+   </a>
+   <i class="social-icon fab fa-twitter fa-lg me-3 "></i>
+   <a 
+     href="http://www.instagram.com/helsinkigymkhana"
+     aria-label="Instagram" target="blank"
+     ><i class="social-icon fab fa-instagram  me-3 fa-lg me-3 "></i></i
+   ></a>
+   
+   <a href="/contact"  target= "blank" aria-label="email"><i class="social-icon fas fa-envelope fa-lg me-3"></i></a>
+  </center>
+   </div> 
+  
+   
+</section>
+<!----
+  <div class="container" style="overflow: hidden">
+   <h2>Get The Cricket Habbit!</h2>
+    <a
+    href="https://www.facebook.com/groups/helsinkigymkhanacricketclub"
+    target="blank"
+    aria-label="Facebook"
+  >
+    <i class="social-icon fab fa-facebook-f  me-3"></i>
+  </a>
+  <i class="social-icon fab fa-twitter "></i>
+  <a 
+    href="http://www.instagram.com/helsinkigymkhana"
+    aria-label="Instagram" target="blank"
+    ><i class="social-icon fab fa-instagram  me-3 "></i></i
+  ></a>
+  
+  <a href="/contact"  target= "blank" aria-label="email"><i class="social-icon fas fa-envelope  me-3"></i></a>
+  </div> 
+</section>--->
+
+<!---- categories------->
 <div class="container categories">
   <div class="row">
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card" id="about-card">
+      <div class="card my-3 mx-3" id="about-card">
         <a href="/about" aria-label="about us">
           <img
             class="category-img"
@@ -41,7 +89,7 @@ Gymkhana CC {% endblock %} {% block main %}
     </div>
 
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card" id="members-card">
+      <div class="card my-3 mx-3" id="members-card">
         <a href="#" aria-label="About club memmbers">
           <img
             class="category-img"
@@ -52,7 +100,7 @@ Gymkhana CC {% endblock %} {% block main %}
         </a>
 
         <div class="card-body">
-          <a href="/club-members" aria-label="Club members" 
+          <a href="/club-members" aria-label="Club members"
             ><h5 class="card-title">Club Members</h5></a
           >
           <p class="card-text">
@@ -64,7 +112,7 @@ Gymkhana CC {% endblock %} {% block main %}
     </div>
 
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card" id="crichq-card">
+      <div class="card my-3 mx-3" id="crichq-card">
         <a href="https://www.crichq.com" aria-label="Crichq" target="blank">
           <img
             class="category-img"
@@ -86,130 +134,150 @@ Gymkhana CC {% endblock %} {% block main %}
       </div>
     </div>
 
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="card my-3 mx-3" id="acheivements-card">
+        <a href="https://www.crichq.com" aria-label="Crichq" target="">
+          <img
+            class="category-img"
+            src="{{ url_for('static', filename='img/mainimages/acheivements3.jpg') }}"
+            class="card-img-top"
+            alt="image"
+          />
+        </a>
 
-        <div class="col-lg-4 col-md-6 col-xs-12">
-          <div class="card" id="acheivements-card">
-            <a href="https://www.crichq.com" aria-label="Crichq" target="">
-              <img
-                class="category-img"
-                src="{{ url_for('static', filename='img/mainimages/acheivements3.jpg') }}"
-                class="card-img-top"
-                alt="image"
-              />
-            </a>
-
-            <div class="card-body">
-              <a
-                href="/acheivements"
-                aria-label="about us"
-                target=""
-                ><h5 class="card-title">Acheivements</h5></a
-              >
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
+        <div class="card-body">
+          <a href="/acheivements" aria-label="about us" target=""
+            ><h5 class="card-title">Acheivements</h5></a
+          >
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
         </div>
-
-        <div class="col-lg-4 col-md-6 col-xs-12">
-          <div class="card" id="gallary-card">
-            <a href="https://www.crichq.com" aria-label="Gallary" target="">
-              <img
-                class="category-img"
-                src="{{ url_for('static', filename='img/mainimages/main-img1.jpg') }}"
-                class="card-img-top"
-                alt="image"
-              />
-            </a>
-
-            <div class="card-body">
-              <a
-                href="/gallary"
-                aria-label="about us"
-                target=""
-                ><h5 class="card-title">Gallary</h5></a
-              >
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-xs-12">
-          <div class="card" id="cricketfinland-card">
-            <a href="https://cricketfinland.com" aria-label="circket-finland" target="blank">
-              <img
-                class="category-img"
-                src="{{ url_for('static', filename='img/mainimages/cricketfinland-logo.png') }}"
-                class="card-img-top"
-                alt="image"
-              />
-            </a>
-
-            <div class="card-body">
-              <a
-                href="https://cricketfinland.com"
-                aria-label="about us"
-                target="blank"
-                ><h5 class="card-title">Cricket Finland</h5></a
-              >
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
 
-    <!----- News and event ------>
-    <section id="updates">
-    <h2>Updates</h2>
-    <div class="container" id="news-events">
-      {% for update in updates %}
-        <div class="testimonial-box">
-          <a href="{{ url_for('public.detail_updates', update_id=update.id)  }}" aria-label="details"> <h4>{{ update.title }}</h4></a>
-        
-          <p style="text-align: justify;">
-          {{ update.content }}..<a href="{{ url_for('public.detail_updates', update_id=update.id)  }}"> <small style="color: orange;"> Read more</small></a>
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="card my-3 mx-3" id="gallary-card">
+        <a href="https://www.crichq.com" aria-label="Gallary" target="">
+          <img
+            class="category-img"
+            src="{{ url_for('static', filename='img/mainimages/main-img1.jpg') }}"
+            class="card-img-top"
+            alt="image"
+          />
+        </a>
+
+        <div class="card-body">
+          <a href="/gallary" aria-label="about us" target=""
+            ><h5 class="card-title">Gallary</h5></a
+          >
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
           </p>
-          <small class="text-muted">Posted on: {{ update.date_posted.strftime('%Y-%m-%d') }}</small>
-          
         </div>
-      {% endfor %}
+      </div>
     </div>
-    <center>
-      <a href="{{ url_for('public.updates')  }}"> <button class="btn btn-dark mb-5"> Explore All Updates </button> </a>
-    </center>
-  </section>
 
+    <div class="col-lg-4 col-md-6 col-xs-12">
+      <div class="card my-3 mx-3" id="cricketfinland-card">
+        <a
+          href="https://cricketfinland.com"
+          aria-label="circket-finland"
+          target="blank"
+        >
+          <img
+            class="category-img"
+            src="{{ url_for('static', filename='img/mainimages/cricketfinland-logo.png') }}"
+            class="card-img-top"
+            alt="image"
+          />
+        </a>
 
-  
-    <!----- CTA ------->
-    <section id="press">
-      <div class="CTA">
-        <div class="sub_cta">
-          <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/logo.png') }}" alt="image">
-          <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/fafas.png') }}" alt="image">
+        <div class="card-body">
+          <a
+            href="https://cricketfinland.com"
+            aria-label="about us"
+            target="blank"
+            ><h5 class="card-title">Cricket Finland</h5></a
+          >
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
         </div>
-        <div class="sub_cta">
-          <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/cricketfinland-logo.png') }}" alt="biz-insider-logo">
-          <img class="press-logo" src="{{ url_for('static', filename='img/mainimages/crickhq.png') }}" alt="mashable-logo">
-        </div>
-        
-       
-   </div>
-  </section>
+      </div>
+    </div>
+  </div>
+</div>
 
-    {% endblock %}
-    <!---- 
-  <script type="text/javascript">
+<!----- News and event ------>
+<section id="updates">
+  <h2>Updates</h2>
+  <div class="container" id="news-events">
+    {% for update in updates %}
+    <div class="testimonial-box">
+      <a
+        href="{{ url_for('public.detail_updates', update_id=update.id)  }}"
+        aria-label="details"
+      >
+        <h4>{{ update.title }}</h4></a
+      >
+
+      <p style="text-align: justify">
+        {{ update.content }}..<a
+          href="{{ url_for('public.detail_updates', update_id=update.id)  }}"
+        >
+          <small style="color: orange"> Read more</small></a
+        >
+      </p>
+      <small class="text-muted"
+        >Posted on: {{ update.date_posted.strftime('%Y-%m-%d') }}</small
+      >
+    </div>
+    {% endfor %}
+  </div>
+  <center>
+    <a href="{{ url_for('public.updates')  }}">
+      <button class="btn btn-dark mb-5">Explore All Updates</button>
+    </a>
+  </center>
+</section>
+
+<!----- CTA ------->
+<section id="press">
+  <div class="CTA">
+    <div class="sub_cta">
+      <img
+        class="press-logo"
+        src="{{ url_for('static', filename='img/mainimages/logo.png') }}"
+        alt="image"
+      />
+      <img
+        class="press-logo"
+        src="{{ url_for('static', filename='img/mainimages/fafas.png') }}"
+        alt="image"
+      />
+    </div>
+    <div class="sub_cta">
+      <img
+        class="press-logo"
+        src="{{ url_for('static', filename='img/mainimages/cricketfinland-logo.png') }}"
+        alt="biz-insider-logo"
+      />
+      <img
+        class="press-logo"
+        src="{{ url_for('static', filename='img/mainimages/crickhq.png') }}"
+        alt="mashable-logo"
+      />
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+<!--{% block scripts %}
+<script type="text/javascript">
   let image = document.getElementById(image);
   let images = [
     "{{ url_for('static', filename='img/main-img1.jpg') }}",
@@ -219,6 +287,5 @@ Gymkhana CC {% endblock %} {% block main %}
     let random = Math.floor(Math.random() * 2);
     image.src = images[random];
   }, 800);
-</script>----->
-  </div>
-</div>
+</script>
+ {% endblock %}--->
