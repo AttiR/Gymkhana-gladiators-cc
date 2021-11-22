@@ -18,7 +18,7 @@ class Config(object):
     SECURITY_PASSWORD_SALT=os.environ.get('SECURITY_PASSWORD_SALT')    
    
     SQLALCHEMY_TRACK_MODIFICATIONS= False
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DEV_DATABASE_URL')
+  
     #Email Setup
     MAIL_SERVER='smtp.googlemail.com'
     MAIL_PORT=587
@@ -26,6 +26,10 @@ class Config(object):
     MAIL_USERNAME= os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD= os.environ.get('EMAIL_PASS')
     ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')
+
+    @staticmethod
+    def init_app(app):
+        pass
     
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
@@ -33,6 +37,7 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     DEBUG=True  
+    SQLALCHEMY_DATABASE_URI=os.environ.get('DEV_DATABASE_URL')
 
 class TestingConfig(Config):
     TESTING=True
