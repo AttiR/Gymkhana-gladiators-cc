@@ -36,7 +36,7 @@ class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
     DEBUG=False
     SSL_REDIRECT = True if os.environ.get('DYNO') else False
-    MAIL_SERVER=(465, 'smtp.googlemail.com')
+    MAIL_SERVER='smtp.googlemail.com'
     MAIL_PORT=465
    
 
