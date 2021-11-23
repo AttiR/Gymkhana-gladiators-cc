@@ -2,7 +2,9 @@
 from flask import current_app
 from datetime import datetime, timezone
 from flask import redirect, url_for, abort
+from flask.helpers import flash
 from flask_admin.contrib.sqla.view import ModelView
+from flask_admin.model.base import BaseModelView
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from .import db, login_manager
 from flask_login import UserMixin, current_user
@@ -88,15 +90,26 @@ class User(db.Model, UserMixin):
 
 
 # Authorization admin view we will import this class in __init__.py
-class Controller(ModelView):
+class AdminView(ModelView):
     def is_accessible(self):
         if current_user.admin==True:
             return current_user.is_authenticated
         else:    
             return abort(403)
-    def inaccessible_callback(self):
-        if not current_user.is_authenticated:
-            return abort(403)   
+    def handle_view(self):
+        if not self.is_accessible():
+            flash('you are not authorized', 'info')
+            return redirect(url_for('main.home')) 
+
+class UserView(AdminView):
+    column_list = ('name', 'username', 'email', 'phonenumber')
+    column_searchable_list = ('name',)
+   
+class UpdateView(AdminView):
+     column_list = ('title', 'date_posted', 'content')
+     column_searchable_list = ('title',)
+               
+
 
 # News and updates database
 

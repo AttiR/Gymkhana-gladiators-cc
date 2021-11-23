@@ -5,11 +5,13 @@
   href="{{ url_for('static', filename='css/styles.css') }}"
 />
 {% endblock head_css %} {% block body %}
-<h1 style="margin-top: 4rem">Welcome {{ current_user.name }}!</h1>
-<a href="{{ url_for('main.home') }}">
-  <button class="btn btn-primary">Back to Home</button>
-</a>
-<a href="{{ url_for('auth.logout') }}">
-  <button class="btn btn-danger">Logout</button>
-</a>
+<center>
+  <h1 style="margin-top: 4rem">Welcome {{ current_user.name }}!</h1>
+  <a href="{{ url_for('main.home') }}">
+    <button class="btn btn-primary">Back to Home</button>
+  </a>
+  <a href="{{ url_for('auth.logout') }}">
+    <button class="btn btn-danger">Logout</button>
+  </a>
+</center>
 {% endblock body %}
