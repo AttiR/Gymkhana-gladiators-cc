@@ -30,7 +30,7 @@ def signup():
         password_hash=bcrypt.generate_password_hash(password).decode('utf-8')
       
 
-        user = User(name, username, email, phonenumber, password_hash, confirmed=False)
+        user = User(name, username, email, phonenumber, password_hash, confirmed=True, confirmed_on=datetime.datetime.now())
         #admin=User(name, username, email,phonenumber, password_hash, confirmed=True, admin=True, confirmed_on=datetime.datetime.now() )
         db.session.add(user)
         db.session.commit()
