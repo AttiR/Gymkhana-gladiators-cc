@@ -2,13 +2,17 @@
 Gymkhana CC {% endblock %} {% block main %}
 <section id="contact-section">
   <div class="container contact">
-    <div class="contact-us id:adress">
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis
-        commodi consequuntur provident cumque at voluptatibus vero cupiditate
-        obcaecati vitae aliquid odit ipsa pariatur similique illum quasi eos, id
-        
-      </p>
+    
+    <div class="contact-us" id="address">
+      <div class="coloured" style="background: rgb(221, 160, 30);">
+        <h3>Contact US</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+          varius auctor lacus nec feugiat. Phasellus sit amet ex ipsum.
+          Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget
+          porta in, lacinia et magna
+        </p>
+      </div>
       <p>
         <address>
           <b>Adress: </b> <br> Helsinkijljdoekopdekpoe<br>
@@ -31,9 +35,11 @@ Gymkhana CC {% endblock %} {% block main %}
       +7xxx8568658758575 <br>
       +xhskhs66868686868 <br>
      
-      </p>
+      </p> 
+  
     
     </div>
+    
     <div class="contact-us">
       <!------- flash messages------>
       {% with messages = get_flashed_messages(with_categories=true) %} {% if
@@ -44,7 +50,7 @@ Gymkhana CC {% endblock %} {% block main %}
       <form method="post" action="/contact">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-          <legend>Contact Us</legend>
+          <legend>We Appreciate Feedback!</legend>
 
           <div class="mb-3">
             {{ form.first_name.label(class= "form-control-label")}} {{
@@ -65,12 +71,13 @@ Gymkhana CC {% endblock %} {% block main %}
             form.feedback(class= "form-control form-control-lg")}}
           </div>
 
-          <div class="mb-3">
+          <div class="d-grid gap-2 my-4">
             {{ form.submit(class= "btn btn-lg btn-success")}}
           </div>
         </fieldset>
       </form>
     </div>
   </div>
+ 
 </section>
 {% endblock %}

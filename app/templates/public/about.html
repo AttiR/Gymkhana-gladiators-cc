@@ -4,62 +4,49 @@
   {% block main %}
   <img
     class="main-imgforsubpages"
-    src="{{ url_for('static', filename='img/mainimages/main-img3.jpg') }}"
+    src="{{ url_for('static', filename='img/mainimages/mainfront1.jpg') }}"
     alt="image"
   />
-  <div class="container about my-4">
-    <div class="about-us">
-      <h3>History</h3>
-      <p>
-        Helsinki Gymkhana Cricket Club ry is officially registered with Finnish
-        Cricket Association (FCA) known in Finnish as Suomen krikettiliiton and
-        Finnish Patentti ja Rekisterihallitus (PRH). Registration number is
-        209.205. Helsinki Gymkhana Cricket Club ry was founded on 21.12.2012.
-        Hgymkhana cc Helsinki based cricket club. The main objective of
-        Hgymkhanaclub ry is to play and promote good quality and friendly
-        cricket in Finalnd. To achieve this objective management is motivated to
-        coordinate with Finland Cricket Association, VALO and other cricket
-        clubs in Finland. We welcome people from all nationalities, back grounds
-        and cultures without any discramination.
-      </p>
-      <h3>Why to Join Gymkhana?</h3>
-      <hr />
-      WELCOME!   Cricket is in our blood. Feel the same? Come and see us in
-      action. Or try out and play with us!   Mission Statement: ​ To provide the
-      opportunity for all people, regardless of Age, Race, Religion, Gender,
-      Culture, Disabilities, or Background to play quality cricket in a friendly
-      environment in the true spirit of the game. ​ HGCC became champions of
-      Finnish Premier League 2020 and One Day Cup 2020 both, its really great
-      achievement and honour for all members.
+
+  <section id="about">
+    <div class="container about_div">
+      <article id="main-col">
+        <h1 class="page-title">About Us</h1>
+        <p>
+          Helsinki Gymkhana Cricket Club ry is officially registered with
+          Finnish Cricket Association (FCA) known in Finnish as Suomen
+          krikettiliiton and Finnish Patentti ja Rekisterihallitus (PRH).
+          Registration number is 209.205. Helsinki Gymkhana Cricket Club ry was
+          founded on 21.12.2012. Hgymkhana cc Helsinki based cricket club. The
+          main objective of Hgymkhanaclub ry is to play and promote good quality
+          and friendly cricket in Finalnd. To achieve this objective management
+          is motivated to coordinate with Finland Cricket Association, VALO and
+          other cricket clubs in Finland. We welcome people from all
+          nationalities, back grounds and cultures without any discramination.
+        </p>
+        <p class="coloured">
+          WELCOME!   Cricket is in our blood. Feel the same? Come and see us in
+          action. Or try out and play with us!   Mission Statement: ​ To provide
+          the opportunity for all people, regardless of Age, Race, Religion,
+          Gender, Culture, Disabilities, or Background to play quality cricket
+          in a friendly environment in the true spirit of the game. ​ HGCC
+          became champions of Finnish Premier League 2020 and One Day Cup 2020
+          both, its really great achievement and honour for all members.
+        </p>
+      </article>
+
+      <aside id="sidebar">
+        <div class="coloured">
+          <h3>Why to Join Us</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            varius auctor lacus nec feugiat. Phasellus sit amet ex ipsum.
+            Praesent pharetra tincidunt tempor. Etiam velit eros, dapibus eget
+            porta in, lacinia et magna
+          </p>
+        </div>
+      </aside>
     </div>
-    <div class="about-us">
-      <h3>Vision</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia
-        quod non ad nihil fugiat dicta! Enim quasi provident consequuntur rerum
-        velit. Sunt sequi doloremque molestiae illum, illo pariatur accusantium.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia
-        quod non ad nihil fugiat dicta! Enim quasi provident consequuntur rerum
-        velit. Sunt sequi doloremque molestiae illum, illo pariatur accusantium.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia
-        quod non ad nihil fugiat dicta! Enim quasi provident consequuntur rerum
-        velit. Sunt sequi doloremque molestiae illum, illo pariatur accusantium.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quia
-        quod non ad nihil fugiat dicta! Enim quasi provident consequuntur rerum
-        velit. Sunt sequi doloremque molestiae illum, illo pariatur accusantium.
-      </p>
-      <img
-        class="about-us-img"
-        src="{{ url_for('static', filename='img/mainimages/about1.jpg') }}"
-        alt="image"
-      />
-    </div>
-  </div>
-  {% endblock %}
+  </section>
 </section>
+{% endblock %}
