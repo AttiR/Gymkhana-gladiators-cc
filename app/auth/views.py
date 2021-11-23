@@ -30,16 +30,16 @@ def signup():
         password_hash=bcrypt.generate_password_hash(password).decode('utf-8')
       
 
-        user = User(name, username, email, phonenumber, password_hash, confirmed=True, confirmed_on=datetime.datetime.now())
+        user = User(name, username, email, phonenumber, password_hash, confirmed=False)
         #admin=User(name, username, email,phonenumber, password_hash, confirmed=True, admin=True, confirmed_on=datetime.datetime.now() )
         db.session.add(user)
         db.session.commit()
         # import from token .py
-        #token = generate_confirmation_token(user.email)
-        #confirm_url = url_for('auth.confirm_email', token=token, _external=True)
-        #html = render_template('mails/confirm.html', confirm_url=confirm_url)
-        #subject = "Please confirm your email"
-        #send_email(user.email, subject, html)
+        token = generate_confirmation_token(user.email)
+        confirm_url = url_for('auth.confirm_email', token=token, _external=True)
+        html = render_template('mails/confirm.html', confirm_url=confirm_url)
+        subject = "Please confirm your email"
+        send_email(user.email, subject, html)
 
         flash('A confirmation email has been sent via email.', 'success')
         return redirect(url_for("main.home"))

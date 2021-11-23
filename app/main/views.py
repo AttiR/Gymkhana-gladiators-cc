@@ -48,18 +48,18 @@ def contact():
 
         # send email for feedback
         # lest set a test varibale
-        #email_sent = False
-        #html = render_template('mails/feedback.html', first_name=first_name, last_name=last_name,
-        #email=email, feedback=feedback)
-        #subject = "Feedback send/Contact Request"
-        #send_email('attirehman388@gmail.com', subject, html) #send_emai() from emails.py
-        #email_sent = True
-        #if(email_sent):
+        email_sent = False
+        html = render_template('mails/feedback.html', first_name=first_name, last_name=last_name,
+        email=email, feedback=feedback)
+        subject = "Feedback send/Contact Request"
+        send_email('attirehman388@gmail.com', subject, html) #send_emai() from emails.py
+        email_sent = True
+        if(email_sent):
             #Flash messages
-            #flash(f'Feedback has been sent, Thank you {first_name}!', 'success') # flash is an easy mthode to send one time alert
-            #return redirect( url_for('main.contact') )
-        #else:
-           #return "email not sent"
+            flash(f'Feedback has been sent, Thank you {first_name}!', 'success') # flash is an easy mthode to send one time alert
+            return redirect( url_for('main.contact') )
+        else:
+           return "email not sent"
      
     return render_template("public/contact.html", form=form)    
 
