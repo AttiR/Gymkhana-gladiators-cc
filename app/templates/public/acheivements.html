@@ -7,41 +7,53 @@ Acheivements {% endblock %} {% block main %}
 />
 <div class="container Acheivements my-4">
   <div class="acheivement">
-    <h2>T20 Finish Premier League</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae odit
-      odio exercitationem excepturi maiores omnis vel reprehenderit! Rem
-      officiis adipisci modi ea mollitia est officia voluptatum laborum
-      laudantium, animi alias?
-    </p>
-    <h3>Winner T20 finish Premier League 2020</h3>
-    <hr />
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius autem
-      veritatis officiis sapiente quis ratione, ipsum placeat reprehenderit iure
-      deleniti accusantium iste facilis quibusdam totam, magnam, qui libero
-      voluptatem unde!
-    </p>
-    <h3>Winner SM40 OneDay Cup 2020</h3>
-    <hr />
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet mollitia
-      minima, consequuntur at doloribus magnam ex excepturi, voluptatum quam
-      exercitationem aliquam eos, deleniti odit expedita laborum voluptates
-      animi repudiandae delectus.
-    </p>
+    <div class="coloured" style="background: rgb(221, 160, 30)">
+      <h3>FPL 2020, Champion</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius
+        auctor lacus nec feugiat. Phasellus sit amet ex ipsum. Praesent pharetra
+        tincidunt tempor. Etiam velit eros, dapibus eget porta in, lacinia et
+        magna
+      </p>
+    </div>
+    <div class="coloured" style="background: #35424a">
+      <h3>SM-40 2020, Champion</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius
+        auctor lacus nec feugiat. Phasellus sit amet ex ipsum. Praesent pharetra
+        tincidunt tempor. Etiam velit eros, dapibus eget porta in, lacinia et
+        magna
+      </p>
+    </div>
+    <div class="coloured" style="background: rgb(221, 160, 30)">
+      <h3>FPL 2021, Finished at 4</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec varius
+        auctor lacus nec feugiat. Phasellus sit amet ex ipsum. Praesent pharetra
+        tincidunt tempor. Etiam velit eros, dapibus eget porta in, lacinia et
+        magna
+      </p>
+    </div>
   </div>
   <div class="acheivement">
-    <img
-      class="acheivement-img"
-      src="{{ url_for('static', filename='img/mainimages/main-img1.jpg') }}"
-      alt="image"
-    />
-    <img
-      class="acheivement-img"
-      src="{{ url_for('static', filename='img/mainimages/main-img2.jpg') }}"
-      alt="image"
-    />
+    <figure>
+      <img
+        class="acheivement-img"
+        src="{{ url_for('static', filename='img/mainimages/main-img1.jpg') }}"
+        alt="image"
+      />
+      <figcaption>
+        Group Photo: Finish Premier Leagure 2020, Winning moements.
+      </figcaption>
+    </figure>
+    <figure>
+      <img
+        class="acheivement-img"
+        src="{{ url_for('static', filename='img/mainimages/main-img2.jpg') }}"
+        alt="image"
+      />
+      <figcaption>Group Photo: SM-40 Oneday 2020, Winning moements.</figcaption>
+    </figure>
   </div>
 </div>
 {% endblock %}

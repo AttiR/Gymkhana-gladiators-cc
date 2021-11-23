@@ -44,11 +44,11 @@ Gymkhana CC {% endblock %} {% block main %}
 
 
 <!---- categories------->
-<div class="container categories">
+<div class="container-fluid categories">
   <div class="row">
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card my-3 mx-3" id="about-card">
-        <a href="/about" aria-label="about us">
+      <div class="card my-4 mx-3" id="about-card">
+        <a href="{{ url_for('main.about') }}" aria-label="about us">
           <img
             class="category-img"
             src="{{ url_for('static', filename='img/mainimages/about.jpg') }}"
@@ -58,7 +58,7 @@ Gymkhana CC {% endblock %} {% block main %}
         </a>
 
         <div class="card-body">
-          <a href="/about" aria-label="about us"
+          <a href="{{ url_for('main.about') }}" aria-label="about us"
             ><h5 class="card-title">About Us</h5></a
           >
           <p class="card-text">
@@ -70,8 +70,8 @@ Gymkhana CC {% endblock %} {% block main %}
     </div>
 
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card my-3 mx-3" id="members-card">
-        <a href="#" aria-label="About club memmbers">
+      <div class="card my-4 mx-3" id="members-card">
+        <a href="{{ url_for('main.members') }}" aria-label="About club memmbers">
           <img
             class="category-img"
             src="{{ url_for('static', filename='img/mainimages/main-img2.jpg') }}"
@@ -81,7 +81,7 @@ Gymkhana CC {% endblock %} {% block main %}
         </a>
 
         <div class="card-body">
-          <a href="/club-members" aria-label="Club members"
+          <a href="{{ url_for('main.members') }}" aria-label="Club members"
             ><h5 class="card-title">Club Members</h5></a
           >
           <p class="card-text">
@@ -93,8 +93,8 @@ Gymkhana CC {% endblock %} {% block main %}
     </div>
 
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card my-3 mx-3" id="crichq-card">
-        <a href="https://www.crichq.com" aria-label="Crichq" target="blank">
+      <div class="card my-4 mx-3" id="crichq-card">
+        <a href="https://www.crichq.com" aria-label="Crichq" target="_blank">
           <img
             class="category-img"
             src="{{ url_for('static', filename='img/mainimages/crichq.jpg') }}"
@@ -104,7 +104,7 @@ Gymkhana CC {% endblock %} {% block main %}
         </a>
 
         <div class="card-body">
-          <a href="https://www.crichq.com" aria-label="about us" target="blank"
+          <a href="https://www.crichq.com" aria-label="about us" target="_blank"
             ><h5 class="card-title">CricHQ</h5></a
           >
           <p class="card-text">
@@ -116,8 +116,8 @@ Gymkhana CC {% endblock %} {% block main %}
     </div>
 
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card my-3 mx-3" id="acheivements-card">
-        <a href="https://www.crichq.com" aria-label="Crichq" target="">
+      <div class="card my-4 mx-3" id="acheivements-card">
+        <a href="{{ url_for('main.acheievments') }}" aria-label="acheiments" >
           <img
             class="category-img"
             src="{{ url_for('static', filename='img/mainimages/acheivements3.jpg') }}"
@@ -127,7 +127,7 @@ Gymkhana CC {% endblock %} {% block main %}
         </a>
 
         <div class="card-body">
-          <a href="/acheivements" aria-label="about us" target=""
+          <a href="{{ url_for('main.acheievments') }}" aria-label="about us" target=""
             ><h5 class="card-title">Acheivements</h5></a
           >
           <p class="card-text">
@@ -139,8 +139,8 @@ Gymkhana CC {% endblock %} {% block main %}
     </div>
 
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card my-3 mx-3" id="gallary-card">
-        <a href="https://www.crichq.com" aria-label="Gallary" target="">
+      <div class="card my-4 mx-3" id="gallary-card">
+        <a href="{{ url_for('main.gallary') }}" aria-label="Gallary" target="">
           <img
             class="category-img"
             src="{{ url_for('static', filename='img/mainimages/main-img1.jpg') }}"
@@ -150,7 +150,7 @@ Gymkhana CC {% endblock %} {% block main %}
         </a>
 
         <div class="card-body">
-          <a href="/gallary" aria-label="about us" target=""
+          <a href="{{ url_for('main.gallary') }}" aria-label="about us" target=""
             ><h5 class="card-title">Gallary</h5></a
           >
           <p class="card-text">
@@ -162,11 +162,11 @@ Gymkhana CC {% endblock %} {% block main %}
     </div>
 
     <div class="col-lg-4 col-md-6 col-xs-12">
-      <div class="card my-3 mx-3" id="cricketfinland-card">
+      <div class="card my-4 mx-3" id="cricketfinland-card">
         <a
           href="https://cricketfinland.com"
           aria-label="circket-finland"
-          target="blank"
+          target="_blank"
         >
           <img
             class="category-img"
@@ -180,7 +180,7 @@ Gymkhana CC {% endblock %} {% block main %}
           <a
             href="https://cricketfinland.com"
             aria-label="about us"
-            target="blank"
+            target="_blank"
             ><h5 class="card-title">Cricket Finland</h5></a
           >
           <p class="card-text">
@@ -221,7 +221,7 @@ Gymkhana CC {% endblock %} {% block main %}
   </div>
   <center>
     <a href="{{ url_for('public.updates')  }}">
-      <button class="btn btn-dark mb-5">Explore All Updates</button>
+      <button class="btn btn-dark " style="margin-bottom: 4rem">Explore All Updates</button>
     </a>
   </center>
 </section>

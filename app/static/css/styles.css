@@ -213,7 +213,7 @@ article#main-col {
   margin: 11rem auto 4rem auto;
 }
 
-/********************************* Updates********/
+/********************************* Updates ********/
 .update {
   margin: 11rem auto 3rem auto;
 }
@@ -433,12 +433,12 @@ label {
   align-items: center;
 }
 .acheivement {
-  margin: 1rem;
+  margin: 3rem;
   text-align: justify;
 }
 .acheivement-img {
   max-width: 600px;
-  height: 400px;
+  height: 350px;
 }
 
 /************************************** Error Section *********/
@@ -521,9 +521,12 @@ label {
 }
 
 /********* Mobile Queries **********/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 560px) {
   #news-events {
     flex-direction: column;
+  }
+  .main-img {
+    height: 500px;
   }
   .press-logo {
     max-width: 30%;

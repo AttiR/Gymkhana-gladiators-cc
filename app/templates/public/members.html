@@ -4,7 +4,9 @@ Members {% endblock %} {% block main %}
 <section>
   <div class="container members">
     <div class="row">
-      {% for member in user %}
+      {% for member in user %} {% if member.confirmed == True %}
+      <!--- Visible only confiremd users --->
+
       <div class="col-lg-4 col-md-6 col-xs-12 py-3">
         <div class="card my-3 mx-3" id="about-card">
           <a href="" aria-label="about us" target="_blank">
@@ -23,7 +25,7 @@ Members {% endblock %} {% block main %}
           </div>
         </div>
       </div>
-      {% endfor %}
+      {% endif %} {% endfor %}
     </div>
   </div>
 </section>

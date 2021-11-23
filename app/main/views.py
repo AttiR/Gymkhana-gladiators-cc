@@ -43,11 +43,7 @@ def contact():
         data = Feedback(first_name, last_name, email, feedback)
         db.session.add(data)
         db.session.commit()
-        flash(f'Feedback has been sent, Thank you {first_name}!', 'success')
-        return redirect( url_for('main.contact') )
 
-        # send email for feedback
-        # lest set a test varibale
         email_sent = False
         html = render_template('mails/feedback.html', first_name=first_name, last_name=last_name,
         email=email, feedback=feedback)
@@ -59,9 +55,17 @@ def contact():
             flash(f'Feedback has been sent, Thank you {first_name}!', 'success') # flash is an easy mthode to send one time alert
             return redirect( url_for('main.contact') )
         else:
-           return "email not sent"
+            return 'email not sent'    
+  
+
+       
+      
+
+       
      
     return render_template("public/contact.html", form=form)    
+
+       
 
 # Glaaalry section
 @main.route("/gallary")
