@@ -95,7 +95,8 @@ class Controller(ModelView):
         else:    
             return abort(403)
     def inaccessible_callback(self):
-        return abort(403)   
+        if not current_user.is_authenticated:
+            return abort(403)   
 
 # News and updates database
 

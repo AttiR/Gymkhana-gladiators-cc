@@ -11,13 +11,14 @@ from dotenv import load_dotenv
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
-class Config(object):
+class Config:
     DEBUG=False
     TESTING=False
     SECRET_KEY= os.environ.get('SECRET_KEY')
     SECURITY_PASSWORD_SALT=os.environ.get('SECURITY_PASSWORD_SALT')    
    
     SQLALCHEMY_TRACK_MODIFICATIONS= False
+    FLASK_ADMIN_SWATCH= 'cerulean'
   
     #Email Setup
     MAIL_SERVER='smtp.googlemail.com'
