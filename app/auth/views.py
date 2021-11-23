@@ -30,9 +30,9 @@ def signup():
         password_hash=bcrypt.generate_password_hash(password).decode('utf-8')
       
 
-        #user = User(name, username, email, phonenumber, password_hash, confirmed=False)
-        admin=User(name, username, email,phonenumber, password_hash, confirmed=True, admin=True, confirmed_on=datetime.datetime.now() )
-        db.session.add(admin)
+        user = User(name, username, email, phonenumber, password_hash, confirmed=False)
+        #admin=User(name, username, email,phonenumber, password_hash, confirmed=True, admin=True, confirmed_on=datetime.datetime.now() )
+        db.session.add(user)
         db.session.commit()
         # import from token .py
         #token = generate_confirmation_token(user.email)
@@ -91,7 +91,7 @@ def login():
             flash('Unsuccessfull Login, please cehck email and password', 'danger')
 
     return render_template("auth/login.html", form=form)   
-
+ 
 # Logout User
 @auth.route('/logout')
 def logout():
