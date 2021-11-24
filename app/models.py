@@ -55,6 +55,7 @@ class User(db.Model, UserMixin):
     confirmed_on = db.Column(db.DateTime, nullable=True)
     posts = db.relationship('Update', backref='author', lazy=True)
     image=db.relationship('UploadImg', backref='author', lazy=True)
+    video=db.relationship('UploadVideo', backref='author', lazy=True)
   
 
     def __init__(self, name, username, email, phonenumber, password, confirmed, admin=False,
@@ -121,8 +122,14 @@ class UploadView(AdminView):
     can_set_page_size = True
     page_size = 5
 
+class VideoView(AdminView):
+    column_list = ('video_name', 'user_id', 'date_upload')
+    column_searchable_list = ('id',)
+    can_set_page_size = True
+    page_size = 5    
+
 class FeedbackView(AdminView):
-    column_list = ('first_name', 'last_name', 'email', 'phonenumber')
+    column_list = ('first_name', 'last_name', 'email','feedback')
     column_searchable_list = ('email','first_name', 'last_name')
     can_set_page_size = True
     page_size = 10
@@ -168,6 +175,26 @@ class UploadImg(db.Model):
 
     def __repr__(self):
         return f"UploadImg('{self.img_name}', {self.desc}' )"      
+
+
+#Upload Video
+class UploadVideo(db.Model):
+    __tablename__ = 'videos'
+    id = db.Column(db.Integer, primary_key=True)
+    video_name=db.Column(db.String(300), nullable=False)
+    desc=db.Column(db.Text())
+    date_upload=db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    def __init__(self, video_name,desc, author):
+        self.video_name=video_name
+        self.desc=desc
+        self.author=author
+        self.date_upload=datetime.now(timezone.utc)
+
+    def __repr__(self):
+        return f"UploadImg('{self.video_name}', {self.desc}' )"  
+        
 
 
 

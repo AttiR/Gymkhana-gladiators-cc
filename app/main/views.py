@@ -3,7 +3,7 @@ from . import main
 from datetime import datetime
 from flask import render_template, request, redirect, url_for, flash, abort
 from .forms import FeedbackForm
-from ..models import Feedback,User, Update, UploadImg
+from ..models import Feedback,User, Update, UploadImg, UploadVideo
 from .. import db
 import os
 #from app import mail
@@ -75,13 +75,16 @@ def gallary():
     image=UploadImg.query.all()
     return render_template("public/gallary.html", image=image)  
 
-# Club members sections    
+# Video Gallary
+@main.route("/video_gallary")
+def video_gallary():
+    video=UploadVideo.query.all()
+    return render_template("public/video_gallary.html", video=video)      
 
+# Club members sections    
 @main.route("/club-members", methods=['POST', 'GET'])
 def members():
     user = User.query.order_by(User.confirmed_on).all() # how to abstract data from User model
-    
-    
     return render_template("public/members.html", user=user)     
 
 @main.route("/acheivements")

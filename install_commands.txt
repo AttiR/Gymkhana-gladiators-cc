@@ -13,3 +13,7 @@ for creating data tablein shell after init app create_app
 from yourapp import db, create_app
 db.create_all(app=create_app('production'))
 pip install pillow   (inorder to reisze the laoded images)
+
+You could try to use heroku pg:psql. This should open a console to your database where you can execute arbitrary SQL:
+
+DROP TABLE products;

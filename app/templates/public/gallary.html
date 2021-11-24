@@ -1,38 +1,37 @@
 {% extends "public/templates/public_template.html" %} {% block title %} Gallary
 {% endblock %} {% block main %}
-<img
-  class="main-imgforsubpages"
-  src="{{ url_for('static', filename='img/mainimages/main-img4.jpg') }}"
-  alt="image"
-/>
+<section style="margin-top: 11opx">
+  <div class="container" style="margin: 11rem auto 3rem auto">
+    <div class="row">
+      <!------ if any flash message------>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %} {% for img in image %}
 
-<div class="container" style="margin: 4rem auto 3rem auto">
-  <div class="row">
-    {% for img in image %}
+      <div class="col-lg-4 col-md-6 col-xs-12 py-3">
+        <div class="card my-3 mx-3" id="about-card">
+          <a
+            href="{{ url_for('static', filename='img/upload/' + img.img_name ) }}"
+            aria-label="about us"
+            target="_blank"
+          >
+            <img
+              class="category-img"
+              src="{{ url_for('static', filename='img/upload/' + img.img_name ) }}"
+              class="card-img-top"
+              alt="image"
+            />
+          </a>
 
-    <div class="col-lg-4 col-md-6 col-xs-12 py-3">
-      <div class="card my-3 mx-3" id="about-card">
-        <a
-          href="{{ url_for('static', filename='img/upload/' + img.img_name ) }}"
-          aria-label="about us"
-          target="_blank"
-        >
-          <img
-            class="category-img"
-            src="{{ url_for('static', filename='img/upload/' + img.img_name ) }}"
-            class="card-img-top"
-            alt="image"
-          />
-        </a>
-
-        <div class="card-body">
-          <p class="card-text">{{ img.desc }}</p>
-          <small class="text-muted"> {{ img.date_upload }} </small>
+          <div class="card-body">
+            <p class="card-text">{{ img.desc }}</p>
+            <small class="text-muted"> {{ img.date_upload }} </small>
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
-</div>
-
+</section>
 {% endblock %}

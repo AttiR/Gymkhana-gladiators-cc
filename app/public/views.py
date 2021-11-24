@@ -5,10 +5,10 @@ from werkzeug.utils import secure_filename
 from .import public
 from flask import render_template, url_for, redirect,request
 from flask_login import login_required, current_user
-from .forms import UpdateForm, ImageUpload
-from ..models import Update, UploadImg
+from .forms import UpdateForm, ImageUpload, VideoUpload
+from ..models import Update, UploadImg, UploadVideo
 from ..import db
-from .utilitis import save_picture
+from .utilitis import save_picture, save_video
 
 
 #Post/Updates views
@@ -96,15 +96,33 @@ def upload_image():
             img=UploadImg(image,desc, current_user)
             db.session.add(img)
             db.session.commit()
-            flash('image has ben saved uploaded', 'success')
-            return redirect(url_for('public.upload_image'))
+            flash('image has ben uploaded', 'success')
+            return redirect(url_for('main.gallary'))
         else:
             flash('error in uploading image', 'info')  
             return redirect(url_for('public.upload_image'))  
-        
-
-        
-
     return render_template('uploads/picupload.html', form=form)    
+
+
+# Upload Image to App
+@public.route('/upload_video', methods=['GET', 'POST'])
+@login_required
+def upload_video():
+    form=VideoUpload()
+    if form.validate_on_submit():
+       
+        if form.video.data and form.description.data:
+            video=save_video(form.video.data)
+            desc=form.description.data
+            vid=UploadVideo(video, desc, current_user)
+
+            db.session.add(vid)
+            db.session.commit()
+            flash('video has been upload', 'success')
+            return redirect(url_for('main.video_gallary'))
+     
+
+    
+    return render_template('uploads/videoupload.html', form=form)     
    
    

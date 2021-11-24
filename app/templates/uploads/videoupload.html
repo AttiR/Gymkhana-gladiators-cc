@@ -1,0 +1,52 @@
+{% extends "public/templates/public_template.html" %} {% block title %} Video
+Upload {% endblock %} {% block main %}
+<section id="picupload-section">
+  <div class="Big-form">
+    <div class="div-center">
+      <div class="form-block">
+        <!------ if any flash message------>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %} {% if current_user.admin==True %}
+
+        <form
+          id="update-form"
+          method="POST"
+          action="/upload_video"
+          enctype="multipart/form-data"
+        >
+          <!--- to make errors obvious--->
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+            <legend class="mb-4">Upload Video</legend>
+
+            <div class="form-group">
+              {{ form.description.label() }} {{
+              form.description(class="form-control form-control-lg") }} {% if
+              form.description.errors%} {% for error in form.description.errors
+              %}
+              <span class="text-danger">{{ error }}</span>
+              {% endfor %} {% endif %}
+            </div>
+
+            <div class="form-group">
+              {{ form.video.label() }} {{ form.video(class="form-control-file")
+              }} {% if form.video.errors%} {% for error in form.video.errors %}
+              <span class="text-danger">{{ error }}</span>
+              {% endfor %} {% endif %}
+            </div>
+          </fieldset>
+          <div class="form-group">
+            {{ form.submit(class= "register-bttn") }}
+          </div>
+        </form>
+        {% else %}
+        <h1>You are Forbidden to Upload Video</h1>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

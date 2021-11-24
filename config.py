@@ -18,20 +18,14 @@ class Config:
     SECURITY_PASSWORD_SALT=os.environ.get('SECURITY_PASSWORD_SALT')    
    
     SQLALCHEMY_TRACK_MODIFICATIONS= False
-    FLASK_ADMIN_SWATCH= 'cerulean' 
+    FLASK_ADMIN_SWATCH= 'cerulean' # Flask admin theme
+    MAX_CONTENT_LENGTH= 16 * 1024 * 1024
   
     #Email Setup
     MAIL_SERVER='smtp.googlemail.com'
     MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))
    
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in ['true', 'on', '1']
-
-
-
-
-        
-
-   
     MAIL_USERNAME= os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD= os.environ.get('EMAIL_PASS')
     ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')

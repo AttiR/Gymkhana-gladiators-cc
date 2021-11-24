@@ -95,9 +95,12 @@ Account -Helsinki Gymkhana CC {% endblock %} {% block main %}
                   </button>
                 </a>
 
-                <a href="/admin" aria-label="update Profile">
-                  <button class="btn1 btn-dark" arial_label="admin">
-                    Admin
+                <a
+                  href="{{ url_for('public.upload_video') }}"
+                  aria-label="upload_video"
+                >
+                  <button class="btn1 btn-success" arial_label="admin">
+                    upload video
                   </button>
                 </a>
                 {% endif %}

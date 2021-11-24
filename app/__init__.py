@@ -48,7 +48,7 @@ def create_app(config_name):
     from .main import main as main_blueprint
     from .auth import auth as auth_blueprint
     from .public import public as public_blueprint
-    from .models import User, Update,UploadImg, Feedback,  UserView, UpdateView, UploadView, FeedbackView
+    from .models import User, Update,UploadImg, Feedback, UploadVideo,  UserView, UpdateView, UploadView, FeedbackView, VideoView
     from .commands import create_tables
 
     
@@ -69,6 +69,7 @@ def create_app(config_name):
     admin.add_view(UpdateView(Update, db.session))
     admin.add_view(UploadView(UploadImg, db.session))
     admin.add_view(FeedbackView(Feedback, db.session))
+    admin.add_view(VideoView(UploadVideo, db.session))
   
    
     

@@ -1,0 +1,41 @@
+{% extends "public/templates/public_template.html" %} {% block title %} Video
+Gallary {% endblock %} {% block main %}
+<section style="margin-top: 11opx">
+  <div class="container" style="margin: 11rem auto 3rem auto">
+    <div class="row">
+      <!------ if any flash message------>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %} {% for clip in video %}
+      <div class="col-lg-4 col-md-6 col-xs-12 py-3">
+        <div class="card my-3 mx-3" id="about-card">
+          <a
+            href="{{ url_for('static', filename='video/upload/' + clip.video_name) }}"
+            aria-label="video"
+            target="_blank"
+          >
+           <video class="category-img" autoplay="autoplay" controls="controls" preload="preload" height="300" width="400">
+              <source class="category-img" src="{{ url_for('static', filename='video/upload/' + clip.video_name) }}" type="video/mp4"></source>
+            </video>
+<!----
+            <iframe
+              id="video"
+              height="315"
+              src="{{ url_for('static', filename='video/upload/' + clip.video_name) }}"
+              frameborder="0"
+              allowfullscreen
+            ></iframe> -->
+          </a>
+
+          <div class="card-body">
+            <p class="card-text">{{ clip.desc }}</p>
+            <small class="text-muted"> {{ clip.date_upload }} </small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

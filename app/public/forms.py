@@ -17,3 +17,8 @@ class ImageUpload(FlaskForm):
     description= StringField('Description', validators=[DataRequired()])
     picture = FileField('Choose Picture', validators=[FileAllowed(['jpg', 'png'])])                    
     submit = SubmitField('Upload')
+
+class VideoUpload(FlaskForm):
+    description= StringField('Description', validators=[DataRequired()])
+    video = FileField('Choose Video Mp4', validators=[FileAllowed(['mp4'])])                    
+    submit = SubmitField('Upload')    
