@@ -1,12 +1,14 @@
 from os import abort
 from flask.helpers import flash
 from flask.templating import render_template_string
+from werkzeug.utils import secure_filename
 from .import public
 from flask import render_template, url_for, redirect,request
 from flask_login import login_required, current_user
-from .forms import UpdateForm
-from ..models import Update
+from .forms import UpdateForm, ImageUpload
+from ..models import Update, UploadImg
 from ..import db
+from .utilitis import save_picture
 
 
 #Post/Updates views
@@ -85,6 +87,23 @@ def delete(update_id):
 @public.route('/upload_imge', methods=['GET', 'POST'])
 @login_required
 def upload_image():
-    return render_template('uploads/picupload.html')    
+    form=ImageUpload()
+    if form.validate_on_submit():
+        if form.picture.data:
+            image= save_picture(form.picture.data) #save_pitcure() return name
+
+            img=UploadImg(image, current_user)
+            db.session.add(img)
+            db.session.commit()
+            flash('image has ben saved in databse', 'success')
+            return redirect(url_for('public.upload_image'))
+        else:
+            flash('error in uploading image', 'info')  
+            return redirect(url_for('public.upload_image'))  
+        
+
+        
+
+    return render_template('uploads/picupload.html', form=form)    
    
    

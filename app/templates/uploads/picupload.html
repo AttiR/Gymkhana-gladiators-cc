@@ -10,16 +10,28 @@ Upload {% endblock %} {% block main %}
         <div class="alert alert-{{ category }}">{{ message }}</div>
         {% endfor %} {% endif %} {% endwith %} {% if current_user.admin==True %}
 
-        <form action="/upload_imge" enctype="multipart/form-data" method="POST">
-          <input
-            class="form-control"
-            type="file"
-            name="file"
-            placeholder="image"
-          />
-          <button class="btn btn-info my-4" type="submit" style="color: #fff">
-            Upload an Image
-          </button>
+        <form
+          id="update-form"
+          method="POST"
+          action="/upload_imge"
+          enctype="multipart/form-data"
+        >
+          <!--- to make errors obvious--->
+          {{ form.hidden_tag() }}
+          <fieldset class="form-group">
+            <legend class="mb-4">Upload Image</legend>
+
+            <div class="form-group">
+              {{ form.picture.label() }} {{
+              form.picture(class="form-control-file") }} {% if
+              form.picture.errors%} {% for error in form.picture.errors %}
+              <span class="text-danger">{{ error }}</span>
+              {% endfor %} {% endif %}
+            </div>
+          </fieldset>
+          <div class="form-group">
+            {{ form.submit(class= "register-bttn") }}
+          </div>
         </form>
         {% else %}
         <h1>You are Forbidden to Upload image</h1>

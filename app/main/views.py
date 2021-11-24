@@ -1,8 +1,9 @@
+from app.public.forms import ImageUpload
 from . import main
 from datetime import datetime
 from flask import render_template, request, redirect, url_for, flash, abort
 from .forms import FeedbackForm
-from ..models import Feedback,User, Update
+from ..models import Feedback,User, Update, UploadImg
 from .. import db
 import os
 #from app import mail
@@ -70,7 +71,9 @@ def contact():
 # Glaaalry section
 @main.route("/gallary")
 def gallary():
-    return render_template("public/gallary.html")  
+
+    image=UploadImg.query.all()
+    return render_template("public/gallary.html", image=image)  
 
 # Club members sections    
 

@@ -115,6 +115,20 @@ class UpdateView(AdminView):
     can_set_page_size = True
     page_size = 5
 
+class UploadView(AdminView):
+    column_list = ('img_name', 'user_id', 'date_upload')
+    column_searchable_list = ('img_name',)
+    can_set_page_size = True
+    page_size = 5
+
+class FeedbackView(AdminView):
+    column_list = ('first_name', 'last_name', 'email', 'phonenumber')
+    column_searchable_list = ('email','first_name', 'last_name')
+    can_set_page_size = True
+    page_size = 10
+
+
+
 
 # News and updates database
 

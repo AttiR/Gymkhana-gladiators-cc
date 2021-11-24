@@ -10,6 +10,12 @@ Members {% endblock %} {% block main %}
     <div class="col">
       <h1>Photos</h1>
       <p>Will update it</p>
+      {% for img in image %}
+      <img
+        src="{{ url_for('static', filename='img/upload/' + img.img_name ) }}"
+        alt="image"
+      />
+      {% endfor %}
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField, TextAreaField
+from flask_wtf.file import FileField, FileAllowed
 from wtforms.validators import DataRequired
 
 #Make Post Update
@@ -9,3 +10,9 @@ class UpdateForm(FlaskForm):
     content=TextAreaField('Content', validators=[DataRequired()])
     submit=SubmitField('Post Update')
 
+
+# Image Upload
+
+class ImageUpload(FlaskForm):
+    picture = FileField('Choose Picture', validators=[FileAllowed(['jpg', 'png'])])                    
+    submit = SubmitField('Upload')

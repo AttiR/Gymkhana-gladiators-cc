@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_manager
+
 from config import config
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
@@ -47,7 +48,7 @@ def create_app(config_name):
     from .main import main as main_blueprint
     from .auth import auth as auth_blueprint
     from .public import public as public_blueprint
-    from .models import User, Update, UserView, UpdateView
+    from .models import User, Update,UploadImg, Feedback,  UserView, UpdateView, UploadView, FeedbackView
     from .commands import create_tables
 
     
@@ -63,9 +64,11 @@ def create_app(config_name):
         sslify = SSLify(app)
 
 
-   
+    # Flask Admin section Model views
     admin.add_view(UserView(User, db.session))
     admin.add_view(UpdateView(Update, db.session))
+    admin.add_view(UploadView(UploadImg, db.session))
+    admin.add_view(FeedbackView(Feedback, db.session))
   
    
     
