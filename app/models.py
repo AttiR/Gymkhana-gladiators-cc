@@ -103,12 +103,16 @@ class AdminView(ModelView):
 
 class UserView(AdminView):
     column_list = ('name', 'username', 'email', 'phonenumber')
-    column_searchable_list = ('name',)
+    column_searchable_list = ('name','email', 'phonenumber',)
+    can_set_page_size = True
+    # the number of entries to display in the list view
+    page_size = 5
    
 class UpdateView(AdminView):
-     column_list = ('title', 'date_posted', 'content')
-     column_searchable_list = ('title',)
-               
+    column_list = ('title', 'date_posted', 'content')
+    column_searchable_list = ('title',)
+    can_set_page_size = True
+    page_size = 5
 
 
 # News and updates database

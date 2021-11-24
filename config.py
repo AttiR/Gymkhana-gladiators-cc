@@ -18,7 +18,7 @@ class Config:
     SECURITY_PASSWORD_SALT=os.environ.get('SECURITY_PASSWORD_SALT')    
    
     SQLALCHEMY_TRACK_MODIFICATIONS= False
-    FLASK_ADMIN_SWATCH= 'cerulean'
+    FLASK_ADMIN_SWATCH= 'cerulean' 
   
     #Email Setup
     MAIL_SERVER='smtp.googlemail.com'
