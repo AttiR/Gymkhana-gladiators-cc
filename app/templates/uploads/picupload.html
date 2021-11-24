@@ -1,0 +1,32 @@
+{% extends "public/templates/public_template.html" %} {% block title %} Pic
+Upload {% endblock %} {% block main %}
+<section id="picupload-section">
+  <div class="Big-form">
+    <div class="div-center">
+      <div class="form-block">
+        <!------ if any flash message------>
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if
+        messages %} {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %} {% endif %} {% endwith %} {% if current_user.admin==True %}
+
+        <form action="/upload_imge" enctype="multipart/form-data" method="POST">
+          <input
+            class="form-control"
+            type="file"
+            name="file"
+            placeholder="image"
+          />
+          <button class="btn btn-info my-4" type="submit" style="color: #fff">
+            Upload an Image
+          </button>
+        </form>
+        {% else %}
+        <h1>You are Forbidden to Upload image</h1>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

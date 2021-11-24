@@ -22,8 +22,16 @@ class Config:
   
     #Email Setup
     MAIL_SERVER='smtp.googlemail.com'
-    MAIL_PORT=587
-    MAIL_USE_TLS= True
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))
+   
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in ['true', 'on', '1']
+
+
+
+
+        
+
+   
     MAIL_USERNAME= os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD= os.environ.get('EMAIL_PASS')
     ADMIN_PASSWORD=os.environ.get('ADMIN_PASS')
@@ -36,6 +44,7 @@ class Config:
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
     DEBUG=False
+    SSL_REDIRECT = True
     SSL_REDIRECT = True if os.environ.get('DYNO') else False
    
    

@@ -54,6 +54,7 @@ class User(db.Model, UserMixin):
     admin=db.Column(db.Boolean, nullable=False, default=False)
     confirmed_on = db.Column(db.DateTime, nullable=True)
     posts = db.relationship('Update', backref='author', lazy=True)
+    image=db.relationship('UploadImg', backref='author', lazy=True)
   
 
     def __init__(self, name, username, email, phonenumber, password, confirmed, admin=False,
@@ -132,6 +133,25 @@ class Update(db.Model):
 
     def __repr__(self):
         return f"Update('{self.title}',{self.content}', '{self.date_posted}')"           
+
+
+
+
+#Upload image
+class UploadImg(db.Model):
+    __tablename__ = 'images'
+    id = db.Column(db.Integer, primary_key=True)
+    img_name=db.Column(db.String(300), nullable=False)
+    date_upload=db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+
+    def __init__(self, img_name,author):
+        self.img_name=img_name
+        self.author=author
+        self.date_upload=datetime.now(timezone.utc)
+
+    def __repr__(self):
+        return f"UploadImg('{self.img_name}')"      
 
 
 
