@@ -1,22 +1,38 @@
-{% extends "public/templates/public_template.html" %} {% block title %} Club
-Members {% endblock %} {% block main %}
+{% extends "public/templates/public_template.html" %} {% block title %} Gallary
+{% endblock %} {% block main %}
 <img
   class="main-imgforsubpages"
   src="{{ url_for('static', filename='img/mainimages/main-img4.jpg') }}"
   alt="image"
 />
-<div class="container my-4">
+
+<div class="container" style="margin: 4rem auto 3rem auto">
   <div class="row">
-    <div class="col">
-      <h1>Photos</h1>
-      <p>Will update it</p>
-      {% for img in image %}
-      <img
-        src="{{ url_for('static', filename='img/upload/' + img.img_name ) }}"
-        alt="image"
-      />
-      {% endfor %}
+    {% for img in image %}
+
+    <div class="col-lg-4 col-md-6 col-xs-12 py-3">
+      <div class="card my-3 mx-3" id="about-card">
+        <a
+          href="{{ url_for('static', filename='img/upload/' + img.img_name ) }}"
+          aria-label="about us"
+          target="_blank"
+        >
+          <img
+            class="category-img"
+            src="{{ url_for('static', filename='img/upload/' + img.img_name ) }}"
+            class="card-img-top"
+            alt="image"
+          />
+        </a>
+
+        <div class="card-body">
+          <p class="card-text">{{ img.desc }}</p>
+          <small class="text-muted"> {{ img.date_upload }} </small>
+        </div>
+      </div>
     </div>
+    {% endfor %}
   </div>
 </div>
+
 {% endblock %}

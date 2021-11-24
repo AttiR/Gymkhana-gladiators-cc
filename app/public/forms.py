@@ -14,5 +14,6 @@ class UpdateForm(FlaskForm):
 # Image Upload
 
 class ImageUpload(FlaskForm):
+    description= StringField('Description', validators=[DataRequired()])
     picture = FileField('Choose Picture', validators=[FileAllowed(['jpg', 'png'])])                    
     submit = SubmitField('Upload')

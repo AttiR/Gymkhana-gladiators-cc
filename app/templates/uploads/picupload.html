@@ -13,13 +13,22 @@ Upload {% endblock %} {% block main %}
         <form
           id="update-form"
           method="POST"
-          action="/upload_imge"
+          action="/upload_image"
           enctype="multipart/form-data"
         >
           <!--- to make errors obvious--->
           {{ form.hidden_tag() }}
           <fieldset class="form-group">
             <legend class="mb-4">Upload Image</legend>
+
+            <div class="form-group">
+              {{ form.description.label() }} {{
+              form.description(class="form-control form-control-lg") }} {% if
+              form.description.errors%} {% for error in form.description.errors
+              %}
+              <span class="text-danger">{{ error }}</span>
+              {% endfor %} {% endif %}
+            </div>
 
             <div class="form-group">
               {{ form.picture.label() }} {{

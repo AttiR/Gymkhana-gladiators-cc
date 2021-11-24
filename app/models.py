@@ -156,16 +156,18 @@ class UploadImg(db.Model):
     __tablename__ = 'images'
     id = db.Column(db.Integer, primary_key=True)
     img_name=db.Column(db.String(300), nullable=False)
+    desc=db.Column(db.Text())
     date_upload=db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, img_name,author):
+    def __init__(self, img_name,desc, author):
         self.img_name=img_name
+        self.desc=desc
         self.author=author
         self.date_upload=datetime.now(timezone.utc)
 
     def __repr__(self):
-        return f"UploadImg('{self.img_name}')"      
+        return f"UploadImg('{self.img_name}', {self.desc}' )"      
 
 
 

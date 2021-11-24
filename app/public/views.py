@@ -84,18 +84,19 @@ def delete(update_id):
 
 
 # Upload Image to App
-@public.route('/upload_imge', methods=['GET', 'POST'])
+@public.route('/upload_image', methods=['GET', 'POST'])
 @login_required
 def upload_image():
     form=ImageUpload()
     if form.validate_on_submit():
-        if form.picture.data:
+       
+        if form.picture.data and form.description.data:
             image= save_picture(form.picture.data) #save_pitcure() return name
-
-            img=UploadImg(image, current_user)
+            desc=form.description.data      
+            img=UploadImg(image,desc, current_user)
             db.session.add(img)
             db.session.commit()
-            flash('image has ben saved in databse', 'success')
+            flash('image has ben saved uploaded', 'success')
             return redirect(url_for('public.upload_image'))
         else:
             flash('error in uploading image', 'info')  
