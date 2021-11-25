@@ -64,6 +64,8 @@ def confirm_email(token):
         flash('You have confirmed your account. Thanks!', 'success')
     return redirect(url_for('auth.login'))
 
+    # put logic here for if token expired
+
 
 #Login Route
 @auth.route("/login", methods=['POST', 'GET'])
