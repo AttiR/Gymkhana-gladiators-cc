@@ -37,8 +37,8 @@ def create_update():
         db.session.add(post)
         db.session.commit()
 
-        flash('Update has been updated successfully', 'info')
-        return redirect(url_for('main.home'))
+        flash('Update has been Posted successfully', 'info')
+        return redirect(url_for('public.updates'))
 
     return render_template('updates/create_update.html', legend='Make Post', form=form) 
 

@@ -26,7 +26,9 @@
 
           <div class="card-body">
             <p class="card-text">{{ img.desc }}</p>
-            <small class="text-muted"> {{ img.date_upload }} </small>
+            <small class="text-muted">
+              Posted on: {{ img.date_upload.strftime('%Y-%m-%d') }}
+            </small>
           </div>
         </div>
       </div>

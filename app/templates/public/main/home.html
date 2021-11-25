@@ -44,14 +44,14 @@ Gymkhana CC {% endblock %} {% block main %}
 
 
 <!---- categories------->
-<div class="container-fluid categories">
+<div class="container categories">
   <div class="row">
     <div class="col-lg-4 col-md-6 col-xs-12">
       <div class="card my-4 mx-3" id="about-card">
         <a href="{{ url_for('main.about') }}" aria-label="about us">
           <img
             class="category-img"
-            src="{{ url_for('static', filename='img/mainimages/about.jpg') }}"
+            src="{{ url_for('static', filename='img/mainimages/aboutusmain1.jpg') }}"
             class="card-img-top"
             alt="image"
           />
@@ -62,8 +62,7 @@ Gymkhana CC {% endblock %} {% block main %}
             ><h5 class="card-title">About Us</h5></a
           >
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Helsinki Gymkhana Cricket Club ry is officially registered with Finnish Cricket Association (FCA).
           </p>
         </div>
       </div>
@@ -74,7 +73,7 @@ Gymkhana CC {% endblock %} {% block main %}
         <a href="{{ url_for('main.members') }}" aria-label="About club memmbers">
           <img
             class="category-img"
-            src="{{ url_for('static', filename='img/mainimages/main-img2.jpg') }}"
+            src="{{ url_for('static', filename='img/mainimages/club1.jpg') }}"
             class="card-img-top"
             alt="image"
           />
@@ -85,8 +84,7 @@ Gymkhana CC {% endblock %} {% block main %}
             ><h5 class="card-title">Club Members</h5></a
           >
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Helsinki Gymkhana Cricket Club ry is officially registered with Finnish Cricket Association (FCA)
           </p>
         </div>
       </div>
@@ -94,22 +92,21 @@ Gymkhana CC {% endblock %} {% block main %}
 
     <div class="col-lg-4 col-md-6 col-xs-12">
       <div class="card my-4 mx-3" id="crichq-card">
-        <a href="https://www.crichq.com" aria-label="Crichq" target="_blank">
+        <a href="https://www.crichq.com" aria-label="Crichq" target="_blank" rel="noopener">
           <img
             class="category-img"
-            src="{{ url_for('static', filename='img/mainimages/crichq.jpg') }}"
+            src="{{ url_for('static', filename='img/mainimages/crichq2.jpg') }}"
             class="card-img-top"
             alt="image"
           />
         </a>
 
         <div class="card-body">
-          <a href="https://www.crichq.com" aria-label="about us" target="_blank"
+          <a href="https://www.crichq.com" aria-label="crichq" target="_blank" rel="noopener"
             ><h5 class="card-title">CricHQ</h5></a
           >
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
       </div>
@@ -131,8 +128,7 @@ Gymkhana CC {% endblock %} {% block main %}
             ><h5 class="card-title">Acheivements</h5></a
           >
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
       </div>
@@ -154,8 +150,7 @@ Gymkhana CC {% endblock %} {% block main %}
             ><h5 class="card-title">Gallary</h5></a
           >
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
       </div>
@@ -166,7 +161,7 @@ Gymkhana CC {% endblock %} {% block main %}
         <a
           href="https://cricketfinland.com"
           aria-label="circket-finland"
-          target="_blank"
+          target="_blank" rel="noopener"
         >
           <img
             class="category-img"
@@ -178,14 +173,13 @@ Gymkhana CC {% endblock %} {% block main %}
 
         <div class="card-body">
           <a
-            href="https://cricketfinland.com"
+            href="https://cricketfinland.com" rel="noopener"
             aria-label="about us"
             target="_blank"
             ><h5 class="card-title">Cricket Finland</h5></a
           >
           <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
         </div>
       </div>
@@ -210,7 +204,7 @@ Gymkhana CC {% endblock %} {% block main %}
         {{ update.content }}..<a
           href="{{ url_for('public.detail_updates', update_id=update.id)  }}"
         >
-          <small style="color: orange"> Read more</small></a
+          <small style="color: rgb(221, 160, 30)"> Read more</small></a
         >
       </p>
       <small class="text-muted"
@@ -221,52 +215,13 @@ Gymkhana CC {% endblock %} {% block main %}
   </div>
   <center>
     <a href="{{ url_for('public.updates')  }}">
-      <button class="btn btn-dark " style="margin-bottom: 4rem">Explore All Updates</button>
+      <button class="btn btn-success " style="margin-bottom: 4rem; border-radius: 50px;">Explore All Updates</button>
     </a>
   </center>
 </section>
 
-<!----- CTA ------->
-<section id="press">
-  <div class="CTA">
-    <div class="sub_cta">
-      <img
-        class="press-logo"
-        src="{{ url_for('static', filename='img/mainimages/logo.png') }}"
-        alt="image"
-      />
-      <img
-        class="press-logo"
-        src="{{ url_for('static', filename='img/mainimages/fafas.png') }}"
-        alt="image"
-      />
-    </div>
-    <div class="sub_cta">
-      <img
-        class="press-logo"
-        src="{{ url_for('static', filename='img/mainimages/cricketfinland-logo.png') }}"
-        alt="biz-insider-logo"
-      />
-      <img
-        class="press-logo"
-        src="{{ url_for('static', filename='img/mainimages/crickhq.png') }}"
-        alt="mashable-logo"
-      />
-    </div>
-  </div>
-</section>
+
+
 
 {% endblock %}
-<!--{% block scripts %}
-<script type="text/javascript">
-  let image = document.getElementById(image);
-  let images = [
-    "{{ url_for('static', filename='img/main-img1.jpg') }}",
-    "{{ url_for('static', filename='img/main-img2.jpg') }}",
-  ];
-  setInterval(function () {
-    let random = Math.floor(Math.random() * 2);
-    image.src = images[random];
-  }, 800);
-</script>
- {% endblock %}--->
+

@@ -28,8 +28,23 @@ a:active {
   text-decoration: none;
   color: #2b2b2b;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat-Bold';
+  font-size: large;
+}
 i {
   color: #2b2b2b;
+}
+p {
+  line-height: 1.8;
+  word-spacing: 5px;
+  font-family: 'Montserrat';
 }
 /*section {
   margin-top: 110px;
@@ -103,7 +118,7 @@ nav li a:hover:not(.active) {
 
 /*** News & Events ***/
 #updates h2 {
-  color: orange;
+  color: rgb(221, 160, 30);
   margin-bottom: 4rem;
   margin-left: 100px;
 }
@@ -144,6 +159,7 @@ nav li a:hover:not(.active) {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-top: 2px solid rgb(221, 160, 30);
 }
 .sub_cta {
   margin: 1rem;
@@ -154,7 +170,7 @@ nav li a:hover:not(.active) {
 }
 #press {
   padding: 3%;
-  background: #f3e7d8;
+  background: #fff;
 }
 
 /******************************* About ********************************/
@@ -455,9 +471,9 @@ label {
 /***************************************** Footer Section  **/
 #footer {
   text-align: center;
-  background: #fff;
+  background: #f3e7d8;
   height: 20vh;
-  border-top: 1px solid orange;
+  border-top: 2px solid rgb(221, 160, 30);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -524,7 +540,7 @@ label {
 }
 
 /********* Mobile Queries **********/
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 500px) {
   #news-events {
     flex-direction: column;
   }
@@ -534,5 +550,11 @@ label {
   .press-logo {
     max-width: 30%;
     margin: auto 10px;
+  }
+  .testimonial-box {
+    max-width: 100%;
+  }
+  .form-block {
+    max-width: 100%;
   }
 }

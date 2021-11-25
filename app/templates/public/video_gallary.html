@@ -15,7 +15,7 @@ Gallary {% endblock %} {% block main %}
             aria-label="video"
             target="_blank"
           >
-           <video class="category-img" autoplay="autoplay" controls="controls" preload="preload" height="300" width="400">
+           <video class="category-img"  controls="controls" preload="preload" height="300" width="400">
               <source class="category-img" src="{{ url_for('static', filename='video/upload/' + clip.video_name) }}" type="video/mp4"></source>
             </video>
 <!----
@@ -30,7 +30,7 @@ Gallary {% endblock %} {% block main %}
 
           <div class="card-body">
             <p class="card-text">{{ clip.desc }}</p>
-            <small class="text-muted"> {{ clip.date_upload }} </small>
+            <small class="text-muted"> Posted on:  {{ clip.date_upload.strftime('%Y-%m-%d') }} </small>
           </div>
         </div>
       </div>
