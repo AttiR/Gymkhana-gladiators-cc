@@ -15,7 +15,7 @@ Application Live Preview: (https://helsinki-gymkhana-cc.herokuapp.com).
 - https://github.com/AttiR/Gymkhana-gladiators-cc.git
 - setUp Python vituall enevironment $ sudo pip install virtualenv
 - pip3 install -r requirements.txt
-- export FLASK_APP=run.py
+- import FLASK_APP=run.py
 - flask run
 
 ### Built with
