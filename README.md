@@ -9,6 +9,15 @@ Application Live Preview: (https://helsinki-gymkhana-cc.herokuapp.com).
 - Secure Website and public pages.
 - Version Contorl and deployment on Heroku.
 ## Process
+
+### Clone App and run locally
+
+- https://github.com/AttiR/Gymkhana-gladiators-cc.git
+- setUp Python vituall enevironment $ sudo pip install virtualenv
+- pip3 install -r requirements.txt
+- export FLASK_APP=run.py
+- flask run
+
 ### Built with
 - Flask Framework, Python, HTML, CSS, JavaScript, Bootstrap5
 - Database: PostgreSQL, pgAdmin4 to visualize the database.
